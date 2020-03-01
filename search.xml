@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>过拟合及其解决方法</title>
+    <url>/2020/03/01/%E8%BF%87%E6%8B%9F%E5%90%88%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="1-过拟合概念"><a href="#1-过拟合概念" class="headerlink" title="1. 过拟合概念"></a>1. 过拟合概念</h2><p>在深度学习或机器学习过程中，在训练集上表现过于优越，在验证集及测试集中表现不佳，模型泛化能力差。<br><a href="https://blog.csdn.net/jingbo18/article/details/80609006" target="_blank" rel="noopener">过拟合及常见处理办法整理</a></p>
+<h2 id="2-常见原因"><a href="#2-常见原因" class="headerlink" title="2. 常见原因"></a>2. 常见原因</h2><p>原因主要是数据样本少及噪声多</p>
+<ul>
+<li>数据样本少</li>
+<li>数据噪声多</li>
+<li>模型复杂度高</li>
+<li>迭代次数多</li>
+</ul>
+<h2 id="3-解决方法"><a href="#3-解决方法" class="headerlink" title="3. 解决方法"></a>3. 解决方法</h2><ul>
+<li>获取更多的数据<ul>
+<li>数据源获取更多的数据</li>
+<li>数据增强</li>
+</ul>
+</li>
+<li>更改模型结构<ul>
+<li>换简单模型</li>
+<li>L1 &amp; L2 范式</li>
+<li>Dropout</li>
+<li>Early Stopping</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-数据增强"><a href="#4-数据增强" class="headerlink" title="4. 数据增强"></a>4. 数据增强</h2><p>自然语言处理技术中常用的数据增强方法</p>
+<ul>
+<li>同义词替换</li>
+<li>随机插入</li>
+<li>随机交换</li>
+<li>随机删除</li>
+</ul>
+<h2 id="5-L1-amp-L2-范式"><a href="#5-L1-amp-L2-范式" class="headerlink" title="5. L1 &amp; L2 范式"></a>5. L1 &amp; L2 范式</h2><ul>
+<li>范式定义<br>$$ \left (  \sum_{i}\left  | x_i \right | ^p   \right)^\frac{1}{p} $$</li>
+<li>加入范式的目标函数<br>$$J^2\left(w, b\right) = J\left(w, b\right) + \frac{\lambda}{2m}\Omega (w)$$ </li>
+<li>L1范式<br>$$\Omega (w)  = \sum_{i} \left | w_i  \right |$$ </li>
+<li>L2范式<br>$$\Omega (w)  = ( \sum_{i} \left | w_i  \right | ^2) ^\frac{1}{2}$$ </li>
+<li>结论<br><br>L1 正则化用作特征选择，L2 正则化用作防止过拟合<br><br>参考介绍—<a href="https://www.jianshu.com/p/569efedf6985" target="_blank" rel="noopener">机器学习中的正则化</a></li>
+</ul>
+<h2 id="6-Dropout"><a href="#6-Dropout" class="headerlink" title="6. Dropout"></a>6. Dropout</h2>]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>过拟合</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LSTM 常见问题</title>
     <url>/2020/02/29/LSTM-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h2 id="1-LSTM-原理"><a href="#1-LSTM-原理" class="headerlink" title="1 LSTM 原理"></a>1 LSTM 原理</h2><p>从RNN网络出发开始介绍LSTM网络<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">理解LSTM网络</a>，记录其架构图及公式。</p>
