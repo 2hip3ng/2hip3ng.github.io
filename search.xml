@@ -47,6 +47,10 @@
       <tags>
         <tag>机器学习</tag>
         <tag>过拟合</tag>
+        <tag>正则化</tag>
+        <tag>L1范式</tag>
+        <tag>L2范式</tag>
+        <tag>Dropout</tag>
       </tags>
   </entry>
   <entry>
