@@ -419,11 +419,12 @@
 <h2 id="5-L1-amp-L2-范式"><a href="#5-L1-amp-L2-范式" class="headerlink" title="5. L1 &amp; L2 范式"></a>5. L1 &amp; L2 范式</h2><ul>
 <li>范式定义<br>$$ \left (  \sum_{i}\left  | x_i \right | ^p   \right)^\frac{1}{p} $$</li>
 <li>加入范式的目标函数<br>$$J^2\left(w, b\right) = J\left(w, b\right) + \frac{\lambda}{2m}\Omega (w)$$ </li>
-<li>L1范式<br>$$\Omega (w)  = \sum_{i} \left | w_i  \right |$$ </li>
-<li>L2范式<br>$$\Omega (w)  = ( \sum_{i} \left | w_i  \right | ^2) ^\frac{1}{2}$$ </li>
+<li>L1范式惩罚因子<br>$$\Omega (w)  = \sum_{i} \left | w_i  \right |$$ </li>
+<li>L2范式惩罚因子<br>$$\Omega (w)  =  \sum_{i} \left | w_i  \right | ^2$$ </li>
 <li>结论<br><br>L1 正则化用作特征选择，L2 正则化用作防止过拟合<br><br>参考介绍—<a href="https://www.jianshu.com/p/569efedf6985" target="_blank" rel="noopener">机器学习中的正则化</a></li>
 </ul>
-<h2 id="6-Dropout"><a href="#6-Dropout" class="headerlink" title="6. Dropout"></a>6. Dropout</h2>
+<h2 id="6-Dropout"><a href="#6-Dropout" class="headerlink" title="6. Dropout"></a>6. Dropout</h2><p>训练阶段，对每一个神经元的输出以keep_prob保留，1-keep_prob置为0；<br><br>预测阶段，对每一个神经元的输出乘以keep_prob。<br><br>参考介绍—<a href="https://blog.csdn.net/program_developer/article/details/80737724" target="_blank" rel="noopener">深度学习中Dropout原理解析</a></p>
+
           
         
       
