@@ -294,6 +294,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/TextCNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/04/TextCNN/" itemprop="url">TextCNN&TextGCN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-04T15:41:06+08:00">
+                2020-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">自然语言处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="TextCNN原理"><a href="#TextCNN原理" class="headerlink" title="TextCNN原理"></a>TextCNN原理</h2><ul>
+<li>框架图 <img src="images/TextCNN.png" alt="TextCNN"></li>
+<li>$x_i: $ the k-dimensional word vector corresponding to the i-th word in the sentence.</li>
+<li>向量拼接 <script type="math/tex; mode=display">x_{1:n} = concat(x_i, x_2, ...,x_n)</script></li>
+<li>卷积操作 <script type="math/tex; mode=display">c_i = f (w \cdot x_{i:i+h-1} + b)</script></li>
+<li>卷积结果 <script type="math/tex; mode=display">c = [c_1, c_2, c_3, ..., c_{n-h+1}]</script></li>
+<li>max-over-time pooling <script type="math/tex; mode=display">\hat c = max(x)</script></li>
+<li>这是一个卷积核的结果，实际网络中有256个卷积核和两个通道(static embedding 和 dynamic embedding)</li>
+</ul>
+<h2 id="TextGCN原理"><a href="#TextGCN原理" class="headerlink" title="TextGCN原理"></a>TextGCN原理</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/TF-IDF%E5%8F%8ATextRank/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1208,7 +1358,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1230,7 +1380,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="激活函数," />
+  <meta name="keywords" content="TextCNN,TextGCN," />
 
 
 
@@ -79,24 +79,20 @@
 
 
 
-<meta name="description" content="1.激活函数的理解解决线形模型 y &#x3D; wx + b 的弊端，线形分类模型的分界地方都是平面或者超平面，无法解决具有非线形模型特征的数据。如果没有激励函数，在这种情况下你每一层节点的输入都是上层输出的线性函数，无论你神经网络有多少层，输出都是输入的线性组合，相当于没有隐藏层，网络的学习能力有限。形象的解释神经网络激活函数的作用是什么？常见激活函数，及其优缺点 - 面试篇 2. Sigmoid 数学">
+<meta name="description" content="TextCNN原理 框架图  $x_i: $ the k-dimensional word vector corresponding to the i-th word in the sentence. 向量拼接 x_{1:n} &#x3D; concat(x_i, x_2, ...,x_n) 卷积操作 c_i &#x3D; f (w \cdot x_{i:i+h-1} + b) 卷积结果 c &#x3D; [c_1, c_2,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="激活函数">
-<meta property="og:url" content="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:title" content="TextCNN&amp;TextGCN">
+<meta property="og:url" content="http://yoursite.com/2020/03/04/TextCNN/index.html">
 <meta property="og:site_name" content="2hip3ng">
-<meta property="og:description" content="1.激活函数的理解解决线形模型 y &#x3D; wx + b 的弊端，线形分类模型的分界地方都是平面或者超平面，无法解决具有非线形模型特征的数据。如果没有激励函数，在这种情况下你每一层节点的输入都是上层输出的线性函数，无论你神经网络有多少层，输出都是输入的线性组合，相当于没有隐藏层，网络的学习能力有限。形象的解释神经网络激活函数的作用是什么？常见激活函数，及其优缺点 - 面试篇 2. Sigmoid 数学">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/images/%E9%9D%9E%E7%BA%BF%E5%9E%8B%E6%95%B0%E6%8D%AE.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/images/sigmoid.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/images/sigmoid%E5%AF%BC%E6%95%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/images/tanh.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/images/tanh%E5%AF%BC%E6%95%B0.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/images/Relu.png">
-<meta property="article:published_time" content="2020-03-03T13:36:33.000Z">
-<meta property="article:modified_time" content="2020-03-03T16:07:46.764Z">
+<meta property="og:description" content="TextCNN原理 框架图  $x_i: $ the k-dimensional word vector corresponding to the i-th word in the sentence. 向量拼接 x_{1:n} &#x3D; concat(x_i, x_2, ...,x_n) 卷积操作 c_i &#x3D; f (w \cdot x_{i:i+h-1} + b) 卷积结果 c &#x3D; [c_1, c_2,">
+<meta property="og:image" content="http://yoursite.com/2020/03/04/TextCNN/images/TextCNN.png">
+<meta property="article:published_time" content="2020-03-04T07:41:06.000Z">
+<meta property="article:modified_time" content="2020-03-04T08:06:03.735Z">
 <meta property="article:author" content="2hip3ng">
-<meta property="article:tag" content="激活函数">
+<meta property="article:tag" content="TextCNN">
+<meta property="article:tag" content="TextGCN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/images/%E9%9D%9E%E7%BA%BF%E5%9E%8B%E6%95%B0%E6%8D%AE.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/04/TextCNN/images/TextCNN.png">
 
 
 
@@ -126,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/03/激活函数/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/04/TextCNN/"/>
 
 
 
 
 
-  <title>激活函数 | 2hip3ng</title>
+  <title>TextCNN&TextGCN | 2hip3ng</title>
   
 
 
@@ -303,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/TextCNN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="2hip3ng">
@@ -320,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">激活函数</h1>
+          <h1 class="post-title" itemprop="name headline">TextCNN&TextGCN</h1>
         
 
         <div class="post-meta">
@@ -332,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-03T21:36:33+08:00">
-                2020-03-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-04T15:41:06+08:00">
+                2020-03-04
               </time>
             
 
@@ -355,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">自然语言处理</span>
                   </a>
                 </span>
 
@@ -392,74 +388,16 @@
       
 
       
-        <h2 id="1-激活函数的理解"><a href="#1-激活函数的理解" class="headerlink" title="1.激活函数的理解"></a>1.激活函数的理解</h2><p>解决线形模型 y = wx + b 的弊端，线形分类模型的分界地方都是平面或者超平面，无法解决具有非线形模型特征的数据。如果没有激励函数，在这种情况下你每一层节点的输入都是上层输出的线性函数，无论你神经网络有多少层，输出都是输入的线性组合，相当于没有隐藏层，网络的学习能力有限。<br><br><img src="images/非线型数据.png" alt="非线型数据"><br><br><a href="https://zhuanlan.zhihu.com/p/25279356" target="_blank" rel="noopener">形象的解释神经网络激活函数的作用是什么？</a><br><br><a href="https://blog.csdn.net/GreatXiang888/article/details/99296607" target="_blank" rel="noopener">常见激活函数，及其优缺点 - 面试篇</a></p>
-<h2 id="2-Sigmoid"><a href="#2-Sigmoid" class="headerlink" title="2. Sigmoid"></a>2. Sigmoid</h2><ul>
-<li>数学形式<script type="math/tex; mode=display">\sigma(x) = \frac{1}{1+ e^{-x}}</script><img src="images\sigmoid.png" alt="sigmoid"></li>
-<li>导数形式<script type="math/tex; mode=display">
-\begin{align}
-\sigma ^{'}(x)  &=  (1+e^{-x}) ^ {-2}  \cdot e^{-x} \\
-          &= \frac{e^{-x}}{(1+e^{-x})^2} \\
-          &= \frac{1+e^{-x} -1}{(1+e^{-x})^2} \\
-          &= \frac{1}{ 1+ e^{-x}} - \frac{1}{(1+e^{-x})^2} \\
-          &= \sigma(x) - \sigma ^ 2(x) \\
-          &= \sigma(x) (1-\sigma(x))
-\end{align}</script><img src="images\sigmoid导数.png" alt="sigmoid导数"></li>
-<li>特点 <ul>
-<li>Sigmoid 函数的取值范围在 (0,1) 之间，单调连续，求导容易，一般用于二分类神经网络的输出层。特别的，如果是非常大的负数，那么输出就是0；如果是非常大的正数，输出就是1。 </li>
+        <h2 id="TextCNN原理"><a href="#TextCNN原理" class="headerlink" title="TextCNN原理"></a>TextCNN原理</h2><ul>
+<li>框架图 <img src="images/TextCNN.png" alt="TextCNN"></li>
+<li>$x_i: $ the k-dimensional word vector corresponding to the i-th word in the sentence.</li>
+<li>向量拼接 <script type="math/tex; mode=display">x_{1:n} = concat(x_i, x_2, ...,x_n)</script></li>
+<li>卷积操作 <script type="math/tex; mode=display">c_i = f (w \cdot x_{i:i+h-1} + b)</script></li>
+<li>卷积结果 <script type="math/tex; mode=display">c = [c_1, c_2, c_3, ..., c_{n-h+1}]</script></li>
+<li>max-over-time pooling <script type="math/tex; mode=display">\hat c = max(x)</script></li>
+<li>这是一个卷积核的结果，实际网络中有256个卷积核和两个通道(static embedding 和 dynamic embedding)</li>
 </ul>
-</li>
-<li>缺点<ul>
-<li>如果我们初始化神经网络的权值为 $[0,1]$ 之间的随机值，由反向传播算法的数学推导可知，梯度从后向前传播时，每传递一层梯度值都会减小为原来的0.25倍，如果神经网络隐层特别多，那么梯度在穿过多层后将变得非常小接近于0，即出现梯度消失现象；当网络权值初始化为 $(1,+∞)$ 区间内的值，则会出现梯度爆炸情况。梯度消失更容易产生。</li>
-<li>其解析式中含有幂运算，计算机求解时相对来讲比较耗时。对于规模比较大的深度网络，这会较大地增加训练时间。</li>
-<li>Sigmoid 的 output 不是0均值（即zero-centered）。这是不可取的，这个特性会导致为在后面神经网络的高层处理中收到不是零中心的数据。这将导致梯度下降时的晃动，因为如果数据到了神经元永远时正数时，反向传播时权值w就会全为正数或者负数。</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-tanh"><a href="#3-tanh" class="headerlink" title="3. tanh"></a>3. tanh</h2><ul>
-<li>数学形式<script type="math/tex; mode=display">tanh(x) = \frac{e^{x} - e^{-x}} {e^{x} + e^{-x}}</script><img src="images\tanh.png" alt="tanh"></li>
-<li>导数形式<script type="math/tex; mode=display">
-\begin{align}
-\tanh ^{'}(x)  &=  1 - tanh^2(x)
-\end{align}</script><img src="images\tanh导数.png" alt="tanh导数"></li>
-<li>特点 <ul>
-<li>解决了Sigmoid函数的不是zero-centered输出问题，然而，梯度消失（gradient vanishing）的问题和幂运算的问题仍然存在。</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-Relu"><a href="#4-Relu" class="headerlink" title="4. Relu"></a>4. Relu</h2><ul>
-<li>数学形式<script type="math/tex; mode=display">Relu(x) = max(0, x)</script><img src="images\Relu.png" alt="Relu"></li>
-<li>导数形式<script type="math/tex; mode=display">
-\begin{equation}
-Relu(x) = \left \{
-\begin{aligned}
-1 &  & {x>0} \\
-0 &  & x<0 \\
-None & & x=0 
-\end{aligned}
-\right.
-\end{equation}</script></li>
-<li>优点<ul>
-<li>解决了梯度消失问题</li>
-<li>计算速度非常快，只需要判断输入是否大于0</li>
-<li>收敛速度远快于sigmoid</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>输出不是zero-centered</li>
-<li>原点不可导</li>
-<li>Dead ReLU Problem，指的是某些神经元可能永远不会被激活，导致相应的参数永远不能被更新。有两个主要原因可能导致这种情况产生: (1) 非常不幸的参数初始化，这种情况比较少见。例如w初始化全部为一些负数。 (2) learning rate太高导致在训练过程中参数更新太大，不幸使网络进入这种状态。解决方法是可以采用Xavier初始化方法，以及避免将learning rate设置太大或使用adagrad等自动调节learning rate的算法。</li>
-<li>leaky relu函数，$f(x)=max(αx,x)$ , 比如取α=0.01\alpha=0.01α=0.01，可以改善relu中x&lt;0部分的dead问题。</li>
-</ul>
-</li>
-</ul>
-<h2 id="5-如何选择合适的激活函数"><a href="#5-如何选择合适的激活函数" class="headerlink" title="5. 如何选择合适的激活函数"></a>5. 如何选择合适的激活函数</h2><ul>
-<li>首选 ReLU，速度快，但是要注意学习速率的调整，</li>
-<li>如果 ReLU 效果欠佳,尝试使用 Leaky ReLU 变种。</li>
-<li>可以尝试使用 tanh。</li>
-<li>Sigmoid 和 tanh 在 RNN（LSTM、注意力机制等）结构中有所应用，作为门控或者概率值。其它情况下，减少 Sigmoid 的使用。</li>
-<li>在浅层神经网络中，选择使用哪种激励函数影响不大。</li>
-</ul>
-
+<h2 id="TextGCN原理"><a href="#TextGCN原理" class="headerlink" title="TextGCN原理"></a>TextGCN原理</h2>
       
     </div>
     
@@ -505,7 +443,9 @@ None & & x=0
       
         <div class="post-tags">
           
-            <a href="/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" rel="tag"># 激活函数</a>
+            <a href="/tags/TextCNN/" rel="tag"># TextCNN</a>
+          
+            <a href="/tags/TextGCN/" rel="tag"># TextGCN</a>
           
         </div>
       
@@ -518,8 +458,8 @@ None & & x=0
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/01/%E6%89%8B%E6%8E%A8LR/" rel="next" title="手推LR">
-                <i class="fa fa-chevron-left"></i> 手推LR
+              <a href="/2020/03/04/TF-IDF%E5%8F%8ATextRank/" rel="next" title="TF-IDF及TextRank">
+                <i class="fa fa-chevron-left"></i> TF-IDF及TextRank
               </a>
             
           </div>
@@ -527,10 +467,6 @@ None & & x=0
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/04/TF-IDF%E5%8F%8ATextRank/" rel="prev" title="TF-IDF及TextRank">
-                TF-IDF及TextRank <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -666,7 +602,7 @@ None & & x=0
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-激活函数的理解"><span class="nav-number">1.</span> <span class="nav-text">1.激活函数的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Sigmoid"><span class="nav-number">2.</span> <span class="nav-text">2. Sigmoid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-tanh"><span class="nav-number">3.</span> <span class="nav-text">3. tanh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Relu"><span class="nav-number">4.</span> <span class="nav-text">4. Relu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-如何选择合适的激活函数"><span class="nav-number">5.</span> <span class="nav-text">5. 如何选择合适的激活函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TextCNN原理"><span class="nav-number">1.</span> <span class="nav-text">TextCNN原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TextGCN原理"><span class="nav-number">2.</span> <span class="nav-text">TextGCN原理</span></a></li></ol></div>
             
 
           </div>

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>TextCNN&amp;TextGCN</title>
+    <url>/2020/03/04/TextCNN/</url>
+    <content><![CDATA[<h2 id="TextCNN原理"><a href="#TextCNN原理" class="headerlink" title="TextCNN原理"></a>TextCNN原理</h2><ul>
+<li>框架图 <img src="images/TextCNN.png" alt="TextCNN"></li>
+<li>$x_i: $ the k-dimensional word vector corresponding to the i-th word in the sentence.</li>
+<li>向量拼接 <script type="math/tex; mode=display">x_{1:n} = concat(x_i, x_2, ...,x_n)</script></li>
+<li>卷积操作 <script type="math/tex; mode=display">c_i = f (w \cdot x_{i:i+h-1} + b)</script></li>
+<li>卷积结果 <script type="math/tex; mode=display">c = [c_1, c_2, c_3, ..., c_{n-h+1}]</script></li>
+<li>max-over-time pooling <script type="math/tex; mode=display">\hat c = max(x)</script></li>
+<li>这是一个卷积核的结果，实际网络中有256个卷积核和两个通道(static embedding 和 dynamic embedding)</li>
+</ul>
+<h2 id="TextGCN原理"><a href="#TextGCN原理" class="headerlink" title="TextGCN原理"></a>TextGCN原理</h2>]]></content>
+      <categories>
+        <category>自然语言处理</category>
+      </categories>
+      <tags>
+        <tag>TextCNN</tag>
+        <tag>TextGCN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TF-IDF及TextRank</title>
     <url>/2020/03/04/TF-IDF%E5%8F%8ATextRank/</url>
     <content><![CDATA[<h2 id="1-TF-IDF"><a href="#1-TF-IDF" class="headerlink" title="1. TF-IDF"></a>1. TF-IDF</h2><ul>
