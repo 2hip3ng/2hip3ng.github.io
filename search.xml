@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ResNet</title>
+    <url>/2020/03/07/ResNet/</url>
+    <content><![CDATA[<p>Todo</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>ResNet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Batch Normalization</title>
+    <url>/2020/03/07/Batch-Normalization/</url>
+    <content><![CDATA[<p>Todo</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>Batch Normalization</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>梯度消失、梯度爆炸、解决方法</title>
+    <url>/2020/03/06/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="梯度消失"><a href="#梯度消失" class="headerlink" title="梯度消失"></a>梯度消失</h2><h2 id="梯度爆炸"><a href="#梯度爆炸" class="headerlink" title="梯度爆炸"></a>梯度爆炸</h2><h2 id="梯度消失解决方法"><a href="#梯度消失解决方法" class="headerlink" title="梯度消失解决方法"></a>梯度消失解决方法</h2>]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>梯度消失</tag>
+        <tag>梯度爆炸</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TextCNN&amp;TextGCN</title>
     <url>/2020/03/04/TextCNN/</url>
     <content><![CDATA[<h2 id="TextCNN原理"><a href="#TextCNN原理" class="headerlink" title="TextCNN原理"></a>TextCNN原理</h2><ul>
