@@ -10,6 +10,7 @@
       </categories>
       <tags>
         <tag>ResNet</tag>
+        <tag>残差网络</tag>
       </tags>
   </entry>
   <entry>
@@ -318,7 +319,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
     <url>/2020/02/29/LSTM-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h2 id="1-LSTM-原理"><a href="#1-LSTM-原理" class="headerlink" title="1 LSTM 原理"></a>1 LSTM 原理</h2><p>从RNN网络出发开始介绍LSTM网络<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">理解LSTM网络</a>，记录其架构图及公式。</p>
 <h3 id="1-1-LSTM的框架图"><a href="#1-1-LSTM的框架图" class="headerlink" title="1.1 LSTM的框架图"></a>1.1 LSTM的框架图</h3><p><img src="http://q6goq372a.bkt.clouddn.com/LSTM.png" alt="LSTM"></p>
-<h3 id="1-2-遗忘门"><a href="#1-2-遗忘门" class="headerlink" title="1.2 遗忘门"></a>1.2 遗忘门</h3><script type="math/tex; mode=display">f_t=\delta(W_f\cdot[h_{t-1},x_t]+b_f)</script><h3 id="1-3-输入门"><a href="#1-3-输入门" class="headerlink" title="1.3 输入门"></a>1.3 输入门</h3><script type="math/tex; mode=display">i_t=\delta(W_i\cdot[h_{t-1},x_t]+b_i)</script><script type="math/tex; mode=display">\tilde{C_t}=tanh(W_c\cdot[h_{t-1},x_t]+b_c)</script><script type="math/tex; mode=display">C_t=f_t * h_{t-1} + i_t * \tilde{C_t}</script><h3 id="1-4-输出门"><a href="#1-4-输出门" class="headerlink" title="1.4 输出门"></a>1.4 输出门</h3><script type="math/tex; mode=display">o_t=\delta(W_o\cdot[h_{t-1},x_t]+b_o)</script><script type="math/tex; mode=display">h_t=o_t * tanh(C_t)</script>]]></content>
+<h3 id="1-2-遗忘门"><a href="#1-2-遗忘门" class="headerlink" title="1.2 遗忘门"></a>1.2 遗忘门</h3><script type="math/tex; mode=display">f_t=\delta(W_f\cdot[h_{t-1},x_t]+b_f)</script><h3 id="1-3-输入门"><a href="#1-3-输入门" class="headerlink" title="1.3 输入门"></a>1.3 输入门</h3><script type="math/tex; mode=display">i_t=\delta(W_i\cdot[h_{t-1},x_t]+b_i)</script><script type="math/tex; mode=display">\tilde{C_t}=tanh(W_c\cdot[h_{t-1},x_t]+b_c)</script><script type="math/tex; mode=display">C_t=f_t * C_{t-1} + i_t * \tilde{C_t}</script><h3 id="1-4-输出门"><a href="#1-4-输出门" class="headerlink" title="1.4 输出门"></a>1.4 输出门</h3><script type="math/tex; mode=display">o_t=\delta(W_o\cdot[h_{t-1},x_t]+b_o)</script><script type="math/tex; mode=display">h_t=o_t * tanh(C_t)</script>]]></content>
       <categories>
         <category>自然语言处理</category>
       </categories>
