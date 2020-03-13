@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>面试记录</title>
+    <url>/2020/03/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h2 id="阿里小蜜部门1-简历评估面试-35min-已凉"><a href="#阿里小蜜部门1-简历评估面试-35min-已凉" class="headerlink" title="阿里小蜜部门1-简历评估面试 35min 已凉"></a>阿里小蜜部门1-简历评估面试 35min 已凉</h2><ol>
+<li>自我介绍</li>
+<li>介绍项目</li>
+<li>Bert层数那么高为啥还能收敛？</li>
+<li>文本匹配的方法可以分为哪几类？各自优缺点</li>
+<li>介绍TextCNN</li>
+<li>介绍LSTM</li>
+<li>梯度消失的解决方法</li>
+<li>最大熵</li>
+</ol>
+<h2 id="阿里小蜜部门2-1面-1h"><a href="#阿里小蜜部门2-1面-1h" class="headerlink" title="阿里小蜜部门2-1面 1h"></a>阿里小蜜部门2-1面 1h</h2><ol>
+<li>自我介绍</li>
+<li>算法题 leetcode: twoSum，数据量很大，hash表算法</li>
+<li>介绍项目</li>
+<li>如BERT模型的准确率到了瓶颈，怎么解决？</li>
+</ol>
+]]></content>
+      <categories>
+        <category>NLP面试</category>
+      </categories>
+      <tags>
+        <tag>NLP面试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ResNet</title>
     <url>/2020/03/07/ResNet/</url>
     <content><![CDATA[<p>Todo</p>
