@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>蓄水池抽样算法</title>
+    <url>/2020/03/17/%E8%93%84%E6%B0%B4%E6%B1%A0%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择一个数据？<br></li>
+<li>解法：我们以概率1选择第一个数据，以1/2的概率选择第二个数据，以此类推，以1/m的概率选择第m个对象（如果后面某一数据一旦选中，替换掉以前选中的数据）。当所有数据流过时，每个对象具有相同的被选中的概率1/n。<br></li>
+<li>证明：<script type="math/tex">P_m = \frac{1}{m} \cdot \frac{m}{m+1} \cdot \frac{m+1}{m+2} \cdot *** \cdot \frac{n-2}{n-1} \cdot \frac{n-1}{n} = \frac{1}{n}</script></li>
+<li><p>Python代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n)</span>:</span></span><br><span class="line">    res = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        num = random.randint(<span class="number">1</span>, i):</span><br><span class="line">        <span class="keyword">if</span> i == num:</span><br><span class="line">            res = i</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="蓄水池抽样"><a href="#蓄水池抽样" class="headerlink" title="蓄水池抽样"></a>蓄水池抽样</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择k（k &lt; n）个数据？</li>
+<li>解法：先选中前k个数据（当作一个蓄水池），然后以k/(k+1)的概率选择第k+1个数据，以k/(k+2)的概率选择第k+2个数据，以此类推以k/m的概率选择第m个数据，一旦后面有某个数据被选中，则随机替换蓄水池中的一个数据。最终每个数据被选中的概率均为k/n。</li>
+<li>证明：<script type="math/tex; mode=display">
+\begin{align}
+P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2-k}{m+2} +\frac{k}{m+2}\frac{k-1}{k}) ...(\frac{n-k}{n} +\frac{k}{n}\frac{k-1}{k})  \\
+ &= \frac{k}{n}
+\end{align}</script></li>
+<li>Python代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n, k)</span>:</span></span><br><span class="line">    res = [<span class="number">0</span>] * k</span><br><span class="line">    <span class="keyword">for</span> i range(k):</span><br><span class="line">        res[i] = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i range(k, n):</span><br><span class="line">        num = random.randint(<span class="number">0</span>, i)</span><br><span class="line">        <span class="keyword">if</span> num &lt; k:</span><br><span class="line">            res[num]  = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.jianshu.com/p/87bc058b762e" target="_blank" rel="noopener">蓄水池抽样</a></li>
+<li><a href="https://www.jianshu.com/p/7a9ea6ece2af" target="_blank" rel="noopener">蓄水池抽样算法(Reservoir Sampling)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>蓄水池抽样</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面试记录</title>
     <url>/2020/03/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h2 id="阿里小蜜部门1-简历评估面试-35min-已凉"><a href="#阿里小蜜部门1-简历评估面试-35min-已凉" class="headerlink" title="阿里小蜜部门1-简历评估面试 35min 已凉"></a>阿里小蜜部门1-简历评估面试 35min 已凉</h2><ol>
@@ -327,7 +361,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
 <li>L2范式惩罚因子<script type="math/tex; mode=display">\Omega (w)  =  \sum_{i} \left | w_i  \right | ^2</script></li>
 <li>结论<br><br>L1 正则化用作特征选择，L2 正则化用作防止过拟合<br><br>参考介绍—-<a href="https://www.jianshu.com/p/569efedf6985" target="_blank" rel="noopener">机器学习中的正则化</a></li>
 </ul>
-<h2 id="6-Dropout"><a href="#6-Dropout" class="headerlink" title="6. Dropout"></a>6. Dropout</h2><p>训练阶段，对每一个神经元的输出以keep_prob保留，1-keep_prob置为0；<br><br>预测阶段，对每一个神经元的输出乘以keep_prob。<br><br>参考介绍—-<a href="https://blog.csdn.net/program_developer/article/details/80737724" target="_blank" rel="noopener">深度学习中Dropout原理解析</a></p>
+<h2 id="6-Dropout"><a href="#6-Dropout" class="headerlink" title="6. Dropout"></a>6. Dropout</h2><p>思想：以指数级别创建不同的网络结果，然后各个网络结果加权平均，解决过拟合<br><br>训练阶段，对每一个神经元的输出以keep_prob保留，1-keep_prob置为0；<br><br>预测阶段，对每一个神经元的输出乘以keep_prob。<br><br>缺点: 训练时间变长2-3倍。<br><br>参考介绍—-<a href="https://blog.csdn.net/program_developer/article/details/80737724" target="_blank" rel="noopener">深度学习中Dropout原理解析</a></p>
 ]]></content>
       <categories>
         <category>机器学习</category>

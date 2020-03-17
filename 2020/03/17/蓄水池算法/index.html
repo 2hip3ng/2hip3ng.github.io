@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="蓄水池抽样," />
 
 
 
@@ -79,13 +79,16 @@
 
 
 
-<meta name="description" content="coding-4-zp2hy">
-<meta property="og:type" content="website">
-<meta property="og:title" content="2hip3ng">
-<meta property="og:url" content="http://yoursite.com/tags/LSTM/index.html">
+<meta name="description" content="引子 问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择一个数据？ 解法：我们以概率1选择第一个数据，以1&#x2F;2的概率选择第二个数据，以此类推，以1&#x2F;m的概率选择第m个对象（如果后面某一数据一旦选中，替换掉以前选中的数据）。当所有数据流过时，每个对象具有相同的被选中的概率1&#x2F;n。 证明：P_m &#x3D; \frac{1}{m} \cdot \frac{m}{m+1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓄水池抽样算法">
+<meta property="og:url" content="http://yoursite.com/2020/03/17/%E8%93%84%E6%B0%B4%E6%B1%A0%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="2hip3ng">
-<meta property="og:description" content="coding-4-zp2hy">
+<meta property="og:description" content="引子 问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择一个数据？ 解法：我们以概率1选择第一个数据，以1&#x2F;2的概率选择第二个数据，以此类推，以1&#x2F;m的概率选择第m个对象（如果后面某一数据一旦选中，替换掉以前选中的数据）。当所有数据流过时，每个对象具有相同的被选中的概率1&#x2F;n。 证明：P_m &#x3D; \frac{1}{m} \cdot \frac{m}{m+1">
+<meta property="article:published_time" content="2020-03-17T01:47:56.000Z">
+<meta property="article:modified_time" content="2020-03-17T02:42:55.665Z">
 <meta property="article:author" content="2hip3ng">
+<meta property="article:tag" content="蓄水池抽样">
 <meta name="twitter:card" content="summary">
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/LSTM/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/17/蓄水池算法/"/>
 
 
 
 
 
-  <title>标签: LSTM | 2hip3ng</title>
+  <title>蓄水池抽样算法 | 2hip3ng</title>
   
 
 
@@ -141,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,54 +282,220 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>LSTM<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/17/%E8%93%84%E6%B0%B4%E6%B1%A0%E7%AE%97%E6%B3%95/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/02/29/LSTM-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" itemprop="url">
-              
-                <span itemprop="name">LSTM 常见问题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">蓄水池抽样算法</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-29T20:02:24+08:00"
-              content="2020-02-29" >
-          02-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-17T09:47:56+08:00">
+                2020-03-17
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择一个数据？<br></li>
+<li>解法：我们以概率1选择第一个数据，以1/2的概率选择第二个数据，以此类推，以1/m的概率选择第m个对象（如果后面某一数据一旦选中，替换掉以前选中的数据）。当所有数据流过时，每个对象具有相同的被选中的概率1/n。<br></li>
+<li>证明：<script type="math/tex">P_m = \frac{1}{m} \cdot \frac{m}{m+1} \cdot \frac{m+1}{m+2} \cdot *** \cdot \frac{n-2}{n-1} \cdot \frac{n-1}{n} = \frac{1}{n}</script></li>
+<li><p>Python代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n)</span>:</span></span><br><span class="line">    res = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        num = random.randint(<span class="number">1</span>, i):</span><br><span class="line">        <span class="keyword">if</span> i == num:</span><br><span class="line">            res = i</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="蓄水池抽样"><a href="#蓄水池抽样" class="headerlink" title="蓄水池抽样"></a>蓄水池抽样</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择k（k &lt; n）个数据？</li>
+<li>解法：先选中前k个数据（当作一个蓄水池），然后以k/(k+1)的概率选择第k+1个数据，以k/(k+2)的概率选择第k+2个数据，以此类推以k/m的概率选择第m个数据，一旦后面有某个数据被选中，则随机替换蓄水池中的一个数据。最终每个数据被选中的概率均为k/n。</li>
+<li>证明：<script type="math/tex; mode=display">
+\begin{align}
+P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2-k}{m+2} +\frac{k}{m+2}\frac{k-1}{k}) ...(\frac{n-k}{n} +\frac{k}{n}\frac{k-1}{k})  \\
+ &= \frac{k}{n}
+\end{align}</script></li>
+<li>Python代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n, k)</span>:</span></span><br><span class="line">    res = [<span class="number">0</span>] * k</span><br><span class="line">    <span class="keyword">for</span> i range(k):</span><br><span class="line">        res[i] = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i range(k, n):</span><br><span class="line">        num = random.randint(<span class="number">0</span>, i)</span><br><span class="line">        <span class="keyword">if</span> num &lt; k:</span><br><span class="line">            res[num]  = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.jianshu.com/p/87bc058b762e" target="_blank" rel="noopener">蓄水池抽样</a></li>
+<li><a href="https://www.jianshu.com/p/7a9ea6ece2af" target="_blank" rel="noopener">蓄水池抽样算法(Reservoir Sampling)</a></li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="2hip3ng 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="2hip3ng 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7/" rel="tag"># 蓄水池抽样</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/" rel="next" title="面试记录">
+                <i class="fa fa-chevron-left"></i> 面试记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -334,6 +503,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -354,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -419,6 +601,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蓄水池抽样"><span class="nav-number">2.</span> <span class="nav-text">蓄水池抽样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -559,6 +757,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

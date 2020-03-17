@@ -294,6 +294,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/17/%E8%93%84%E6%B0%B4%E6%B1%A0%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/17/%E8%93%84%E6%B0%B4%E6%B1%A0%E7%AE%97%E6%B3%95/" itemprop="url">蓄水池抽样算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-17T09:47:56+08:00">
+                2020-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择一个数据？<br></li>
+<li>解法：我们以概率1选择第一个数据，以1/2的概率选择第二个数据，以此类推，以1/m的概率选择第m个对象（如果后面某一数据一旦选中，替换掉以前选中的数据）。当所有数据流过时，每个对象具有相同的被选中的概率1/n。<br></li>
+<li>证明：<script type="math/tex">P_m = \frac{1}{m} \cdot \frac{m}{m+1} \cdot \frac{m+1}{m+2} \cdot *** \cdot \frac{n-2}{n-1} \cdot \frac{n-1}{n} = \frac{1}{n}</script></li>
+<li><p>Python代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n)</span>:</span></span><br><span class="line">    res = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        num = random.randint(<span class="number">1</span>, i):</span><br><span class="line">        <span class="keyword">if</span> i == num:</span><br><span class="line">            res = i</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="蓄水池抽样"><a href="#蓄水池抽样" class="headerlink" title="蓄水池抽样"></a>蓄水池抽样</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择k（k &lt; n）个数据？</li>
+<li>解法：先选中前k个数据（当作一个蓄水池），然后以k/(k+1)的概率选择第k+1个数据，以k/(k+2)的概率选择第k+2个数据，以此类推以k/m的概率选择第m个数据，一旦后面有某个数据被选中，则随机替换蓄水池中的一个数据。最终每个数据被选中的概率均为k/n。</li>
+<li>证明：<script type="math/tex; mode=display">
+\begin{align}
+P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2-k}{m+2} +\frac{k}{m+2}\frac{k-1}{k}) ...(\frac{n-k}{n} +\frac{k}{n}\frac{k-1}{k})  \\
+ &= \frac{k}{n}
+\end{align}</script></li>
+<li>Python代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n, k)</span>:</span></span><br><span class="line">    res = [<span class="number">0</span>] * k</span><br><span class="line">    <span class="keyword">for</span> i range(k):</span><br><span class="line">        res[i] = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i range(k, n):</span><br><span class="line">        num = random.randint(<span class="number">0</span>, i)</span><br><span class="line">        <span class="keyword">if</span> num &lt; k:</span><br><span class="line">            res[num]  = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.jianshu.com/p/87bc058b762e" target="_blank" rel="noopener">蓄水池抽样</a></li>
+<li><a href="https://www.jianshu.com/p/7a9ea6ece2af" target="_blank" rel="noopener">蓄水池抽样算法(Reservoir Sampling)</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1746,151 +1910,8 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
 <li>L2范式惩罚因子<script type="math/tex; mode=display">\Omega (w)  =  \sum_{i} \left | w_i  \right | ^2</script></li>
 <li>结论<br><br>L1 正则化用作特征选择，L2 正则化用作防止过拟合<br><br>参考介绍—-<a href="https://www.jianshu.com/p/569efedf6985" target="_blank" rel="noopener">机器学习中的正则化</a></li>
 </ul>
-<h2 id="6-Dropout"><a href="#6-Dropout" class="headerlink" title="6. Dropout"></a>6. Dropout</h2><p>训练阶段，对每一个神经元的输出以keep_prob保留，1-keep_prob置为0；<br><br>预测阶段，对每一个神经元的输出乘以keep_prob。<br><br>参考介绍—-<a href="https://blog.csdn.net/program_developer/article/details/80737724" target="_blank" rel="noopener">深度学习中Dropout原理解析</a></p>
+<h2 id="6-Dropout"><a href="#6-Dropout" class="headerlink" title="6. Dropout"></a>6. Dropout</h2><p>思想：以指数级别创建不同的网络结果，然后各个网络结果加权平均，解决过拟合<br><br>训练阶段，对每一个神经元的输出以keep_prob保留，1-keep_prob置为0；<br><br>预测阶段，对每一个神经元的输出乘以keep_prob。<br><br>缺点: 训练时间变长2-3倍。<br><br>参考介绍—-<a href="https://blog.csdn.net/program_developer/article/details/80737724" target="_blank" rel="noopener">深度学习中Dropout原理解析</a></p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/29/LSTM-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="2hip3ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2hip3ng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/29/LSTM-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" itemprop="url">LSTM 常见问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-29T20:02:24+08:00">
-                2020-02-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">自然语言处理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-LSTM-原理"><a href="#1-LSTM-原理" class="headerlink" title="1 LSTM 原理"></a>1 LSTM 原理</h2><p>从RNN网络出发开始介绍LSTM网络<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">理解LSTM网络</a>，记录其架构图及公式。</p>
-<h3 id="1-1-LSTM的框架图"><a href="#1-1-LSTM的框架图" class="headerlink" title="1.1 LSTM的框架图"></a>1.1 LSTM的框架图</h3><p><img src="http://q6goq372a.bkt.clouddn.com/LSTM.png" alt="LSTM"></p>
-<h3 id="1-2-遗忘门"><a href="#1-2-遗忘门" class="headerlink" title="1.2 遗忘门"></a>1.2 遗忘门</h3><script type="math/tex; mode=display">f_t=\delta(W_f\cdot[h_{t-1},x_t]+b_f)</script><h3 id="1-3-输入门"><a href="#1-3-输入门" class="headerlink" title="1.3 输入门"></a>1.3 输入门</h3><script type="math/tex; mode=display">i_t=\delta(W_i\cdot[h_{t-1},x_t]+b_i)</script><script type="math/tex; mode=display">\tilde{C_t}=tanh(W_c\cdot[h_{t-1},x_t]+b_c)</script><script type="math/tex; mode=display">C_t=f_t * C_{t-1} + i_t * \tilde{C_t}</script><h3 id="1-4-输出门"><a href="#1-4-输出门" class="headerlink" title="1.4 输出门"></a>1.4 输出门</h3><script type="math/tex; mode=display">o_t=\delta(W_o\cdot[h_{t-1},x_t]+b_o)</script><script type="math/tex; mode=display">h_t=o_t * tanh(C_t)</script>
           
         
       
@@ -1928,6 +1949,10 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -1975,7 +2000,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1986,7 +2011,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1997,7 +2022,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
