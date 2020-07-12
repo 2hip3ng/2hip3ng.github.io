@@ -294,6 +294,1217 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/29/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" itemprop="url">排序算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T21:11:27+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-04-04T00:16:08+08:00" content="2020-04-04">
+                2020-04-04
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/" itemprop="url" rel="index">
+                    <span itemprop="name">手撕代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="速记"><a href="#速记" class="headerlink" title="速记"></a>速记</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">时间复杂度</th>
+<th style="text-align:center">稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">冒泡排序</td>
+<td style="text-align:center">$O(n^2)$</td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">插入排序</td>
+<td style="text-align:center">$O(n^2)$</td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">选择排序</td>
+<td style="text-align:center">$O(n^2)$</td>
+<td style="text-align:center">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">归并排序</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">快速排序</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">希尔排序</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">堆排序</td>
+<td style="text-align:center">$O(nlogn)$</td>
+<td style="text-align:center">不稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">基数排序</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">桶排序</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">稳定</td>
+</tr>
+<tr>
+<td style="text-align:center">计数排序</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">稳定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>稳定性记忆方法：高复杂度（ $O(n^2)$ ）选择排序是例外，低复杂度（ $O(nlogn)$ ）归并排序是例外。<br><br>选择排序不稳定举例：(7) 2 5 9 3 4 [7] 1…当我们利用直接选择排序算法进行排序时候,(7)和1调换,(7)就跑到了[7]的后面了,原来的次序改变了,这样就不稳定了.</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(array, start, end)</span>:</span></span><br><span class="line">    <span class="string">"""快速排序"""</span></span><br><span class="line">    <span class="keyword">if</span> start &gt;= end:  </span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    mid = array[start]  </span><br><span class="line">    low = start  </span><br><span class="line">    high = end </span><br><span class="line">    <span class="keyword">while</span> low &lt; high:</span><br><span class="line">        <span class="keyword">while</span> low &lt; high <span class="keyword">and</span> array[high] &gt;= mid:</span><br><span class="line">            high -= <span class="number">1</span></span><br><span class="line">        array[low] = array[high]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> low &lt; high <span class="keyword">and</span> array[low] &lt; mid:</span><br><span class="line">            low += <span class="number">1</span></span><br><span class="line">        array[high] = array[low]</span><br><span class="line"></span><br><span class="line">    array[low] = mid  </span><br><span class="line"></span><br><span class="line">    quick_sort(alist, start, low - <span class="number">1</span>)  </span><br><span class="line">    quick_sort(alist, low + <span class="number">1</span>, end)  </span><br><span class="line"></span><br><span class="line"><span class="comment"># Test</span></span><br><span class="line">array = [<span class="number">54</span>, <span class="number">26</span>, <span class="number">93</span>, <span class="number">17</span>, <span class="number">77</span>, <span class="number">31</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">20</span>]</span><br><span class="line">quick_sort(array, <span class="number">0</span>, len(array) - <span class="number">1</span>)          <span class="comment"># 闭区间 [0, len(array) -1]</span></span><br><span class="line">print(array)</span><br></pre></td></tr></table></figure>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(array)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(array) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> array</span><br><span class="line">    mid = len(array) // <span class="number">2</span></span><br><span class="line">    left_array = merge_sort(array[:mid])</span><br><span class="line">    right_array = merge_sort(array[mid:])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> merge(left_array, right_array)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left_array, right_array)</span>:</span></span><br><span class="line">    array = []</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(left_array) <span class="keyword">and</span> j &lt; len(right_array):</span><br><span class="line">        <span class="keyword">if</span> left_array[i] &lt;= right_array[j]:</span><br><span class="line">            array.append(left_array[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            array.append(right_array[j])</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(left_array):</span><br><span class="line">        array.append(left_array[i])</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> j &lt; len(right_array):</span><br><span class="line">        array.append(right_array[j])</span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> array</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Test</span></span><br><span class="line">array = [<span class="number">54</span>, <span class="number">26</span>, <span class="number">93</span>, <span class="number">17</span>, <span class="number">77</span>, <span class="number">31</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">20</span>]</span><br><span class="line">array = merge_sort(array)          </span><br><span class="line">print(array)</span><br></pre></td></tr></table></figure>
+<h2 id="topK问题"><a href="#topK问题" class="headerlink" title="topK问题"></a>topK问题</h2><h3 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h3><p>最基本的思路，将N个数进行完全排序，从中选出排在前K的元素即为所求。有了这个思路，我们可以选择相应的排序算法进行处理，目前来看快速排序，堆排序和归并排序都能达到$O(NlogN)$的时间复杂度。</p>
+<h3 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h3><p>可以采用数据池的思想，选择其中前K个数作为数据池，后面的N-K个数与这K个数进行比较，若小于其中的任何一个数，则进行替换。这种思路的算法复杂度是$O(N*K)$</p>
+<h3 id="大根堆"><a href="#大根堆" class="headerlink" title="大根堆"></a>大根堆</h3><p>大根堆维护一个大小为K的数组，目前该大根堆中的元素是排名前K的数，其中根是最大的数。此后，每次从原数组中取一个元素与根进行比较，如小于根的元素，则将根元素替换并进行堆调整（下沉），即保证大根堆中的元素仍然是排名前K的数，且根元素仍然最大；否则不予处理，取下一个数组元素继续该过程。该算法的时间复杂度是O(N*logK)，一般来说企业中都采用该策略处理topK问题，因为该算法不需要一次将原数组中的内容全部加载到内存中，而这正是海量数据处理必然会面临的一个关卡。</p>
+<h3 id="快速排序-1"><a href="#快速排序-1" class="headerlink" title="快速排序"></a>快速排序</h3><p>利用快速排序的分划函数找到分划位置K，则其前面的内容即为所求。该算法是一种非常有效的处理方式，时间复杂度是O(N)（证明可以参考算法导论书籍）。对于能一次加载到内存中的数组，该策略非常优秀。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">topK</span><span class="params">(array, K)</span>:</span></span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = len(array) - <span class="number">1</span></span><br><span class="line">    index = quick_sort(array, left, right)</span><br><span class="line">    <span class="keyword">while</span> index+<span class="number">1</span> != K:</span><br><span class="line">        <span class="keyword">if</span> index+<span class="number">1</span> &lt; K:</span><br><span class="line">            index = quick_sort(array, index+<span class="number">1</span>, right)</span><br><span class="line">        <span class="keyword">elif</span> index+<span class="number">1</span> &gt; K:</span><br><span class="line">            index = quick_sort(array, left, index<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">return</span> array[:K]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(array, left, right)</span>:</span></span><br><span class="line">    <span class="comment"># print(left, right)</span></span><br><span class="line">    mid = array[left]</span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> array[right] &lt; mid:</span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line">        array[left] = array[right]</span><br><span class="line">        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> array[left] &gt;= mid:</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">        array[right] = array[left]</span><br><span class="line">    array[left] = mid</span><br><span class="line">    <span class="keyword">return</span> left</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Test</span></span><br><span class="line">array = [<span class="number">54</span>, <span class="number">26</span>, <span class="number">93</span>, <span class="number">17</span>, <span class="number">77</span>, <span class="number">31</span>, <span class="number">44</span>, <span class="number">55</span>, <span class="number">20</span>]</span><br><span class="line">array = topK(array, K=<span class="number">8</span>)          </span><br><span class="line">print(array)</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://www.jianshu.com/p/5b8f00d6a9d7" target="_blank" rel="noopener">topK算法问题</a></li>
+<li><a href="https://blog.csdn.net/zyq522376829/article/details/47686867?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&amp;utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1" target="_blank" rel="noopener">海量数据处理 - 10亿个数中找出最大的10000个数（top K问题）</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/17/%E8%93%84%E6%B0%B4%E6%B1%A0%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/17/%E8%93%84%E6%B0%B4%E6%B1%A0%E7%AE%97%E6%B3%95/" itemprop="url">蓄水池抽样算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-17T09:47:56+08:00">
+                2020-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-03-17T10:42:55+08:00" content="2020-03-17">
+                2020-03-17
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择一个数据？<br></li>
+<li>解法：我们以概率1选择第一个数据，以1/2的概率选择第二个数据，以此类推，以1/m的概率选择第m个对象（如果后面某一数据一旦选中，替换掉以前选中的数据）。当所有数据流过时，每个对象具有相同的被选中的概率1/n。<br></li>
+<li>证明：<script type="math/tex">P_m = \frac{1}{m} \cdot \frac{m}{m+1} \cdot \frac{m+1}{m+2} \cdot *** \cdot \frac{n-2}{n-1} \cdot \frac{n-1}{n} = \frac{1}{n}</script></li>
+<li><p>Python代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n)</span>:</span></span><br><span class="line">    res = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        num = random.randint(<span class="number">1</span>, i):</span><br><span class="line">        <span class="keyword">if</span> i == num:</span><br><span class="line">            res = i</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="蓄水池抽样"><a href="#蓄水池抽样" class="headerlink" title="蓄水池抽样"></a>蓄水池抽样</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择k（k &lt; n）个数据？</li>
+<li>解法：先选中前k个数据（当作一个蓄水池），然后以k/(k+1)的概率选择第k+1个数据，以k/(k+2)的概率选择第k+2个数据，以此类推以k/m的概率选择第m个数据，一旦后面有某个数据被选中，则随机替换蓄水池中的一个数据。最终每个数据被选中的概率均为k/n。</li>
+<li>证明：<script type="math/tex; mode=display">
+\begin{align}
+P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2-k}{m+2} +\frac{k}{m+2}\frac{k-1}{k}) ...(\frac{n-k}{n} +\frac{k}{n}\frac{k-1}{k})  \\
+ &= \frac{k}{n}
+\end{align}</script></li>
+<li>Python代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n, k)</span>:</span></span><br><span class="line">    res = [<span class="number">0</span>] * k</span><br><span class="line">    <span class="keyword">for</span> i range(k):</span><br><span class="line">        res[i] = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i range(k, n):</span><br><span class="line">        num = random.randint(<span class="number">0</span>, i)</span><br><span class="line">        <span class="keyword">if</span> num &lt; k:</span><br><span class="line">            res[num]  = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.jianshu.com/p/87bc058b762e" target="_blank" rel="noopener">蓄水池抽样</a></li>
+<li><a href="https://www.jianshu.com/p/7a9ea6ece2af" target="_blank" rel="noopener">蓄水池抽样算法(Reservoir Sampling)</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/07/ResNet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/07/ResNet/" itemprop="url">ResNet</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-07T11:42:55+08:00">
+                2020-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-03-07T20:16:00+08:00" content="2020-03-07">
+                2020-03-07
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Todo</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/07/Batch-Normalization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/07/Batch-Normalization/" itemprop="url">Batch Normalization</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-07T11:36:41+08:00">
+                2020-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-03-07T15:27:53+08:00" content="2020-03-07">
+                2020-03-07
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于下层的Layer的参数发生改变，导致上层的输入的分布发生改变，最后深度神经网络难以训练。（注意：底层为最下层）</p>
+<ul>
+<li>Internal Covariate Shift (内部协变量偏移): 在深层网络训练的过程中，由于网络中参数变化而引起内部结点数据分布发生变化的这一过程</li>
+<li>Internal Covariate Shift 带来的问题<ul>
+<li>上层网络需要不停调整来适应输入数据分布的变化，导致网络学习速度的降低</li>
+<li>网络的训练过程容易陷入梯度饱和区，减缓网络收敛速度</li>
+</ul>
+</li>
+</ul>
+<h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><ul>
+<li>算法流程图<br><img src="images\BN.png" alt="BN"><br><br>($\epsilon$是为了增加训练稳定性而加入的小的常量数据)</li>
+<li><p>测试阶段如何使用Batch Normalization？</p>
+<ul>
+<li>BN在每一层计算的$\mu$与$\sigma^2$都是基于当前batch中的训练数据，但是这就带来了一个问题：在预测阶段，有可能只需要预测一个样本或很少的样本，没有像训练样本中那么多的数据，此时$\mu$与$\sigma^2$的计算一定是有偏估计，这个时候该如何进行计算？</li>
+<li>利用BN训练好模型后，我们保留了每组mini-batch训练数据在网络中每一层的$\mu<em>{batch}$与$\sigma^2</em>{batch}$。此时我们使用整个样本的统计量来对Test数据进行归一化，具体来说使用均值与方差的无偏估计：<script type="math/tex; mode=display">\mu_{test} = E(\mu_{batch})</script><script type="math/tex; mode=display">\sigma^2_{test} = \frac{m}{m-1}E(\sigma^2_{batch})</script></li>
+<li>得到每个特征的均值与方差的无偏估计后，我们对test数据采用同样的normalization方法：<script type="math/tex; mode=display">BN(x_{test}) = \gamma \frac{X_{test} - \mu_{test}}{\sqrt{\sigma^2_{test} + \epsilon}} + \beta</script></li>
+</ul>
+</li>
+<li><p>batch_normalization做了normalization后为什么要变回来？即 scale and shift<br><br> 如果只做normalize在某些情况下会出现问题，比如对象是Sigmoid函数的output，而且output是分布在Sigmoid函数的两侧，normalize会强制把output分布在Sigmoid函数的中间的非饱和区域，这样会导致这层网络所学习到的特征分布被normalize破坏。而上面算法的最后一步，scale and shift可以令零均值单位方差的分布（normalize之后的分布）通过调节$\gamma$和$\beta$变成任意更好的分布（对于喂给下一层网络来说）。因为这个$\gamma$和$\beta$是在训练过程中可以学习得到参数。</p>
+</li>
+</ul>
+<h2 id="BN的优势"><a href="#BN的优势" class="headerlink" title="BN的优势"></a>BN的优势</h2><ul>
+<li>BN使得网络中每层输入数据的分布相对稳定，加速模型学习速度</li>
+<li>BN允许网络使用饱和性激活函数（例如sigmoid，tanh等），缓解梯度消失问题</li>
+<li>BN使得模型对网络中的参数不那么敏感，简化调参过程，使得网络学习更加稳定</li>
+<li>BN具有一定的正则化效果<br><br>在Batch Normalization中，由于我们使用mini-batch的均值与方差作为对整体训练样本均值与方差的估计，尽管每一个batch中的数据都是从总体样本中抽样得到，但不同mini-batch的均值与方差会有所不同，这就为网络的学习过程中增加了随机噪音，与Dropout通过关闭神经元给网络训练带来噪音类似，在一定程度上对模型起到了正则化的效果。</li>
+</ul>
+<h2 id="BN的缺陷"><a href="#BN的缺陷" class="headerlink" title="BN的缺陷"></a>BN的缺陷</h2><ul>
+<li>不适用于mini-batch非常小的训练环境</li>
+<li>不适用于RNN，因为它是一个动态的网络结构，同一个batch中训练实例有长有短，导致每一个时间步长必须维持各自的统计量，这使得BN并不能正确的使用。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/34879333" target="_blank" rel="noopener">Batch Normalization原理与实战</a></li>
+<li><a href="https://www.zhihu.com/question/38102762/answer/607815171" target="_blank" rel="noopener">深度学习中 Batch Normalization为什么效果好？</a></li>
+<li><a href="https://www.zhihu.com/question/55917730/answer/154269264" target="_blank" rel="noopener">请问batch_normalization做了normalization后为什么要变回来？</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/06/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/06/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" itemprop="url">梯度消失、梯度爆炸、解决方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-06T20:53:33+08:00">
+                2020-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-03-06T20:55:58+08:00" content="2020-03-06">
+                2020-03-06
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="梯度消失"><a href="#梯度消失" class="headerlink" title="梯度消失"></a>梯度消失</h2><h2 id="梯度爆炸"><a href="#梯度爆炸" class="headerlink" title="梯度爆炸"></a>梯度爆炸</h2><h2 id="梯度消失解决方法"><a href="#梯度消失解决方法" class="headerlink" title="梯度消失解决方法"></a>梯度消失解决方法</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/TextCNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/04/TextCNN/" itemprop="url">TextCNN&TextGCN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-04T15:41:06+08:00">
+                2020-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-03-04T19:17:58+08:00" content="2020-03-04">
+                2020-03-04
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">自然语言处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="TextCNN原理"><a href="#TextCNN原理" class="headerlink" title="TextCNN原理"></a>TextCNN原理</h2><ul>
+<li>框架图 <img src="images/TextCNN.png" alt="TextCNN"></li>
+<li>$x_i: $ the k-dimensional word vector corresponding to the i-th word in the sentence.</li>
+<li>向量拼接 <script type="math/tex; mode=display">x_{1:n} = concat(x_i, x_2, ...,x_n)</script></li>
+<li>卷积操作 <script type="math/tex; mode=display">c_i = f (w \cdot x_{i:i+h-1} + b)</script></li>
+<li>卷积结果 <script type="math/tex; mode=display">c = [c_1, c_2, c_3, ..., c_{n-h+1}]</script></li>
+<li>max-over-time pooling <script type="math/tex; mode=display">\hat c = max(x)</script></li>
+<li>这是一个卷积核的结果，实际网络中有256个卷积核和两个通道(static embedding 和 dynamic embedding)</li>
+</ul>
+<h2 id="TextGCN原理"><a href="#TextGCN原理" class="headerlink" title="TextGCN原理"></a>TextGCN原理</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/TF-IDF%E5%8F%8ATextRank/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/04/TF-IDF%E5%8F%8ATextRank/" itemprop="url">TF-IDF及TextRank</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-04T11:00:55+08:00">
+                2020-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-03-04T14:14:04+08:00" content="2020-03-04">
+                2020-03-04
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">自然语言处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-TF-IDF"><a href="#1-TF-IDF" class="headerlink" title="1. TF-IDF"></a>1. TF-IDF</h2><ul>
+<li>TF<ul>
+<li>TF是词频(TF，Term Frequency): 词频（TF）表示词条（关键字）在文本中出现的频率。<script type="math/tex; mode=display">词频(TF) = \frac{某个词在文章中出现的次数}{文章的总词数}</script></li>
+</ul>
+</li>
+<li>IDF<ul>
+<li>IDF是逆向文件频率 (IDF，Inverse Document Frequency): 某一特定词语的IDF，可以由总文件数目除以包含该词语的文件的数目，再将得到的商取对数得到。如果包含词条t的文档越少, IDF越大，则说明词条具有很好的类别区分能力。<script type="math/tex; mode=display">逆文档频率(IDF) = log \frac{语料库的总文档数}{包含该词的文档数+1}</script></li>
+</ul>
+</li>
+<li>TF-IDF<ul>
+<li>TF-IDF实际上是 $TF * IDF$ 。某一特定文件内的高词语频率，以及该词语在整个文件集合中的低文件频率，可以产生出高权重的TF-IDF。因此，TF-IDF倾向于过滤掉常见的词语，保留重要的词语。<script type="math/tex; mode=display">TFIDF = TF \cdot IDF</script></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-TextRank"><a href="#2-TextRank" class="headerlink" title="2. TextRank"></a>2. TextRank</h2><ul>
+<li>基于词语词之间的共现性构建无向图。<br><br>参考<a href="https://my.oschina.net/u/3800567/blog/2870640" target="_blank" rel="noopener">jieba源码分析之关键字提取(TF-IDF/TextRank)</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -338,8 +1549,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-03-04T00:07:46+08:00" content="2020-03-04">
-                2020-03-04
+              <time itemprop="dateUpdated" datetime="2020-07-02T20:33:05+08:00" content="2020-07-02">
+                2020-07-02
               </time>
             </span>
           
@@ -462,210 +1673,6 @@ None & & x=0
 <li>可以尝试使用 tanh。</li>
 <li>Sigmoid 和 tanh 在 RNN（LSTM、注意力机制等）结构中有所应用，作为门控或者概率值。其它情况下，减少 Sigmoid 的使用。</li>
 <li>在浅层神经网络中，选择使用哪种激励函数影响不大。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%EF%BC%88Logistic%20Regression%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="2hip3ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2hip3ng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/01/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%EF%BC%88Logistic%20Regression%EF%BC%89/" itemprop="url">逻辑回归（Logistic Regression）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-01T22:29:58+08:00">
-                2020-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-07-02T20:20:41+08:00" content="2020-07-02">
-                2020-07-02
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-假说"><a href="#1-假说" class="headerlink" title="1. 假说"></a>1. 假说</h2><p>假设样本的标签为0和1， $h(x)$ 为取得预测为标签1的概率。</p>
-<script type="math/tex; mode=display">h(x) = \delta(w^Tx)</script><p>其中， $ \delta(x)$ 为 $Sigmoid$ 函数</p>
-<script type="math/tex; mode=display">\delta(x) = \frac{1}{1+e^{-x}}</script><p>即：</p>
-<script type="math/tex; mode=display">h(x) = \frac{1}{1+e^{-w^Tx}}</script><p>线性变化 $f(x) = w^Tx $ 可以理解为一种回归，加入$Sigmoid$ 函数后值域为$[0,1]$，可以应用至分类分类问题，理解为逻辑回归。</p>
-<h2 id="2-后验概率"><a href="#2-后验概率" class="headerlink" title="2. 后验概率"></a>2. 后验概率</h2><script type="math/tex; mode=display">p(y=1|x) = h(x) = \frac{1}{1+e^{-w^Tx}}</script><script type="math/tex; mode=display">p(y=0|x) = 1- h(x) = 1- \frac{1}{1+e^{-w^Tx}} = \frac{e^{-w^Tx}}{1+e^{-w^Tx}}</script><h2 id="3-似然函数"><a href="#3-似然函数" class="headerlink" title="3. 似然函数"></a>3. 似然函数</h2><p>N 为数据样本数</p>
-<script type="math/tex; mode=display">L(w) = \prod_{i=1}^N p(y=1|x_i)^{y_i}  p(y=0|x_i)^{1-y_i}  = \prod_{i=1}^N h(x_i)^{y_i}(1-h(x_i))^{1-y_i}</script><h2 id="4-对数似然"><a href="#4-对数似然" class="headerlink" title="4. 对数似然"></a>4. 对数似然</h2><script type="math/tex; mode=display">
-\begin{align}
-    log(L(w)) &= log( \prod_{i=1}^N p(y=1|x_i)^{y_i}  p(y=0|x_i)^{1-y_i} ) \\
-    &=  \sum_{i=1}^N  (y_i log(h(x_i))  + (1-y_i)log(1-h(x_i)) ) \\
-    &= \sum_{i=1}^N \{ y_i\{log(h(x_i)) - log(1-h(x_i))\} + log(1-h(x_i))\} \\
-    &= \sum_{i=1}^N \{ y_i log\frac{h(x_i)}{1-h(x_i)} + log(1-h(x_i))\} \\
-    &= \sum_{i=1}^N \{  y_i(w^Tx_i) + log(\frac{e^{-w^Tx}}{1+e^{-w^Tx}}) \} \\
-    &= \sum_{i=1}^N \{  y_i(w^Tx_i) - log(\frac{1+e^{-w^Tx}}{ e^{-w^Tx}}) \} \\
-    &= \sum_{i=1}^N \{  y_i(w^Tx_i) - log(1+ e^{w^Tx}) \}
-\end{align}</script><h2 id="5-损失函数"><a href="#5-损失函数" class="headerlink" title="5. 损失函数"></a>5. 损失函数</h2><p>似然函数乘以 -1/N</p>
-<script type="math/tex; mode=display">J(w) = -\frac{1}{N} log(L(w)) = -\frac{1}{N} \sum_{i=1}^N \{  y_i(w^Tx_i) - log(1+ e^{w^Tx}) \}</script><h2 id="6-梯度下降"><a href="#6-梯度下降" class="headerlink" title="6. 梯度下降"></a>6. 梯度下降</h2><p>Loss 如下：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    \frac{ \partial J(w) }{\partial w} &= -\frac{1}{N}\sum_{i=1}^N \{ \frac{y_i}{h(x_i)} \frac{\partial h(x_i)}{\partial w} - \frac{1-y_i}{1-h(x_i)} \frac{\partial h(x_i)}{\partial w}  \} \\
-    &= -\frac{1}{N}\sum_{i=1}^N \{ \frac{y_i}{h(x_i)} -  \frac{1-y_i}{1-h(x_i)} \}\frac{\partial h(x_i)}{\partial w}  \\
-    &=  -\frac{1}{N}\sum_{i=1}^N \{ \frac{y_i}{h(x_i)} -  \frac{1-y_i}{1-h(x_i)} \} h(x_i)(1-h(x_i)) \frac{\partial w^Tx_i}{\partial w} \\
-    &= -\frac{1}{N}\sum_{i=1}^N \{ y_i (1-h(x_i)) -(1-y_i)h(x_i) \} x_i \\
-    &= -\frac{1}{N}\sum_{i=1}^N \{ y_i - h(x_i)\} x_i
-\end{align}</script><p>推导过程<br><img src="../images/LR推导.jpg" alt="LR"></p>
-<p>参数更新如下：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
-&= w- \frac{1}{N}\sum_{i=1}^N \{  h(x_i) -y_i\} x_i
-\end{align}</script><p>参数更新理解</p>
-<h2 id="7-实践"><a href="#7-实践" class="headerlink" title="7. 实践"></a>7. 实践</h2><h2 id="8-一些问题"><a href="#8-一些问题" class="headerlink" title="8. 一些问题"></a>8. 一些问题</h2><ul>
-<li><p>LR为什么是线性模型？<br><br>Logistic Regression从几率的概念构建线性回归模型。一个事件发生的几率（odds）为该事件发生的概率与不发生概率的比值，几率的取值范围为$[0,+\infty)$，其对数的取值范围为实数域，所以，可以将对数几率作为因变量构建线性回归模型: $log\frac{p}{1-p} = w^Tx$,  由此可得 $p = \frac{1}{1+e^{-w^Tx}}$。这便是Logistic Regression采用sigmoid函数的原因，sigmoid函数将自变量的线性组合映射到（0,1），用以表述分类的概率特性。从sigmoid函数看出，当$w^Tx &gt;0 $ 时，y=1，否则 y=0。$w^Tx=0$ 是模型隐含的分类平面（在高维空间中，我们说是超平面）, 所以说逻辑回归本质上是一个线性模型。</p>
-</li>
-<li><p>为什么逻辑回归比线性回归要好？<br><br>逻辑回归能够用于分类，不过其本质还是线性回归。它仅在线性回归的基础上，在特征到结果的映射中加入了一层sigmoid函数（非线性）映射，即先把特征线性求和，然后使用sigmoid函数来预测。</p>
-</li>
-<li><p>sigmoid函数</p>
-<script type="math/tex; mode=display">\sigma(z) = \frac{1}{1+e^{-z}}</script><script type="math/tex; mode=display">\sigma^{'}(z) = \frac{e^{-z}}{(1+e^{-z})^2} = \sigma(z) (1- \sigma(z))</script><ul>
-<li>优点：<ul>
-<li>Sigmoid函数的输出映射在(0,1)之间，单调连续，输出范围有限，优化稳定，可以用作输出层。</li>
-<li>求导简单。</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>由于其软饱和性，容易产生梯度消失，导致训练出现问题。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>LR 如何解决多分类问题？<br><br> 如果y不是在[0,1]中取值，而是在K个类别中取值，这时问题就变为一个多分类问题。有两种方式可以出处理该类问题：一种是我们对每个类别训练一个二元分类器（One-vs-all），当K个类别不是互斥的时候，比如用户会购买哪种品类，这种方法是合适的。如果K个类别是互斥的，即 y=i 的时候意味着 y 不能取其他的值，比如用户的年龄段，这种情况下 Softmax 回归更合适一些。Softmax 回归是直接对逻辑回归在多分类的推广，相应的模型也可以叫做多元逻辑回归（Multinomial Logistic Regression）, 模型通过 softmax 函数来对概率建模。</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://blog.csdn.net/ltlitao717/article/details/75453480" target="_blank" rel="noopener">机器学习杂货铺-手推LR</a></li>
-<li><a href="https://blog.csdn.net/weixin_44915167/article/details/89377022?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">机器学习面试题之LR</a></li>
 </ul>
 
           
@@ -1114,7 +2121,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1125,7 +2132,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1136,7 +2143,7 @@ w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
