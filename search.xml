@@ -384,9 +384,12 @@ None & & x=0
   </entry>
   <entry>
     <title>逻辑回归（Logistic Regression）</title>
-    <url>/2020/03/01/%E6%89%8B%E6%8E%A8LR/</url>
-    <content><![CDATA[<h2 id="1-假说"><a href="#1-假说" class="headerlink" title="1. 假说"></a>1. 假说</h2><p>假设样本的标签为0和1， h(x) 为取得预测为标签1的概率。</p>
-<script type="math/tex; mode=display">h(x) = \frac{1}{1+e^{-w^Tx}}</script><h2 id="2-后验概率"><a href="#2-后验概率" class="headerlink" title="2. 后验概率"></a>2. 后验概率</h2><script type="math/tex; mode=display">p(y=1|x) = h(x) = \frac{1}{1+e^{-w^Tx}}</script><script type="math/tex; mode=display">p(y=0|x) = 1- h(x) = 1- \frac{1}{1+e^{-w^Tx}} = \frac{e^{-w^Tx}}{1+e^{-w^Tx}}</script><h2 id="3-似然函数"><a href="#3-似然函数" class="headerlink" title="3. 似然函数"></a>3. 似然函数</h2><p>N 为数据样本数</p>
+    <url>/2020/03/01/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%EF%BC%88Logistic%20Regression%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="1-假说"><a href="#1-假说" class="headerlink" title="1. 假说"></a>1. 假说</h2><p>假设样本的标签为0和1， $h(x)$ 为取得预测为标签1的概率。</p>
+<script type="math/tex; mode=display">h(x) = \delta(w^Tx)</script><p>其中， $ \delta(x)$ 为 $Sigmoid$ 函数</p>
+<script type="math/tex; mode=display">\delta(x) = \frac{1}{1+e^{-x}}</script><p>即：</p>
+<script type="math/tex; mode=display">h(x) = \frac{1}{1+e^{-w^Tx}}</script><p>线性变化 $f(x) = w^Tx $ 可以理解为一种回归，加入$Sigmoid$ 函数后值域为$[0,1]$，可以应用至分类分类问题，理解为逻辑回归。</p>
+<h2 id="2-后验概率"><a href="#2-后验概率" class="headerlink" title="2. 后验概率"></a>2. 后验概率</h2><script type="math/tex; mode=display">p(y=1|x) = h(x) = \frac{1}{1+e^{-w^Tx}}</script><script type="math/tex; mode=display">p(y=0|x) = 1- h(x) = 1- \frac{1}{1+e^{-w^Tx}} = \frac{e^{-w^Tx}}{1+e^{-w^Tx}}</script><h2 id="3-似然函数"><a href="#3-似然函数" class="headerlink" title="3. 似然函数"></a>3. 似然函数</h2><p>N 为数据样本数</p>
 <script type="math/tex; mode=display">L(w) = \prod_{i=1}^N p(y=1|x_i)^{y_i}  p(y=0|x_i)^{1-y_i}  = \prod_{i=1}^N h(x_i)^{y_i}(1-h(x_i))^{1-y_i}</script><h2 id="4-对数似然"><a href="#4-对数似然" class="headerlink" title="4. 对数似然"></a>4. 对数似然</h2><script type="math/tex; mode=display">
 \begin{align}
     log(L(w)) &= log( \prod_{i=1}^N p(y=1|x_i)^{y_i}  p(y=0|x_i)^{1-y_i} ) \\
@@ -405,12 +408,14 @@ None & & x=0
     &=  -\frac{1}{N}\sum_{i=1}^N \{ \frac{y_i}{h(x_i)} -  \frac{1-y_i}{1-h(x_i)} \} h(x_i)(1-h(x_i)) \frac{\partial w^Tx_i}{\partial w} \\
     &= -\frac{1}{N}\sum_{i=1}^N \{ y_i (1-h(x_i)) -(1-y_i)h(x_i) \} x_i \\
     &= -\frac{1}{N}\sum_{i=1}^N \{ y_i - h(x_i)\} x_i
-\end{align}</script><p>参数更新如下：</p>
+\end{align}</script><p>推导过程<br><img src="../images/LR推导.jpg" alt="LR"></p>
+<p>参数更新如下：</p>
 <script type="math/tex; mode=display">
 \begin{align}
 w &= w-\alpha \frac{\partial J(w)}{ \partial w}\\
 &= w- \frac{1}{N}\sum_{i=1}^N \{  h(x_i) -y_i\} x_i
-\end{align}</script><h2 id="7-实践"><a href="#7-实践" class="headerlink" title="7. 实践"></a>7. 实践</h2><h2 id="8-一些问题"><a href="#8-一些问题" class="headerlink" title="8. 一些问题"></a>8. 一些问题</h2><ul>
+\end{align}</script><p>参数更新理解</p>
+<h2 id="7-实践"><a href="#7-实践" class="headerlink" title="7. 实践"></a>7. 实践</h2><h2 id="8-一些问题"><a href="#8-一些问题" class="headerlink" title="8. 一些问题"></a>8. 一些问题</h2><ul>
 <li><p>LR为什么是线性模型？<br><br>Logistic Regression从几率的概念构建线性回归模型。一个事件发生的几率（odds）为该事件发生的概率与不发生概率的比值，几率的取值范围为$[0,+\infty)$，其对数的取值范围为实数域，所以，可以将对数几率作为因变量构建线性回归模型: $log\frac{p}{1-p} = w^Tx$,  由此可得 $p = \frac{1}{1+e^{-w^Tx}}$。这便是Logistic Regression采用sigmoid函数的原因，sigmoid函数将自变量的线性组合映射到（0,1），用以表述分类的概率特性。从sigmoid函数看出，当$w^Tx &gt;0 $ 时，y=1，否则 y=0。$w^Tx=0$ 是模型隐含的分类平面（在高维空间中，我们说是超平面）, 所以说逻辑回归本质上是一个线性模型。</p>
 </li>
 <li><p>为什么逻辑回归比线性回归要好？<br><br>逻辑回归能够用于分类，不过其本质还是线性回归。它仅在线性回归的基础上，在特征到结果的映射中加入了一层sigmoid函数（非线性）映射，即先把特征线性求和，然后使用sigmoid函数来预测。</p>
