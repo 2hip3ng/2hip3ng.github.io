@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>优化器算法</title>
+    <url>/2020/08/05/%E4%BC%98%E5%8C%96%E5%99%A8%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="1-BGD（Batch-Gradient-Descent）"><a href="#1-BGD（Batch-Gradient-Descent）" class="headerlink" title="1. BGD（Batch Gradient Descent）"></a>1. BGD（Batch Gradient Descent）</h1><p>思想：使用整个数据训练集计算损失函数</p>
+<p>缺点：计算过程很慢</p>
+<h1 id="2-SGD（Stochastic-Gradient-Descent）"><a href="#2-SGD（Stochastic-Gradient-Descent）" class="headerlink" title="2. SGD（Stochastic Gradient Descent）"></a>2. SGD（Stochastic Gradient Descent）</h1><p>和 BGD 的一次用所有数据计算梯度相比，SGD 每次更新时对每个样本进行梯度更新，对于很大的数据集来说，可能会有相似的样本，这样 BGD 在计算梯度时会出现冗余，而 <strong>SGD 一次只进行一次更新，就没有冗余，而且比较快，并且可以新增样本。</strong></p>
+<p>优点：收敛快</p>
+<p>缺点：引入噪声，存在局部最优</p>
+<h1 id="3-MBGD（Mini-Batch-Gradient-Descent）"><a href="#3-MBGD（Mini-Batch-Gradient-Descent）" class="headerlink" title="3. MBGD（Mini-Batch Gradient Descent）"></a>3. MBGD（Mini-Batch Gradient Descent）</h1><p>MBGD 每一次利用一小批样本，即 n 个样本进行计算</p>
+<p>以上三个算法的缺点：</p>
+<ul>
+<li>Learning Rate 如果选择的太小，收敛速度会很慢，如果太大，Loss Function 就会在极小值处不停地震荡甚至偏离。</li>
+<li>SGD对所有参数更新时应用同样的 Learning Rate，如果我们的数据是稀疏的，我们更希望对出现频率低的特征进行大一点的更新。Learning Rate会随着更新的次数逐渐变小。</li>
+</ul>
+<h1 id="4-Momentum"><a href="#4-Momentum" class="headerlink" title="4. Momentum"></a>4. Momentum</h1><script type="math/tex; mode=display">m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t</script><p>其中$\beta_1 取0.9$</p>
+<p>一阶动量：各个时刻梯度方向的指数移动平均值，约最近 $\frac{1}{1-\beta}$个时刻的梯度向量的平均值。</p>
+<p>优点：<strong>使得梯度方向不变的维度上速度变快，梯度方向有所改变的维度上的更新速度变慢，这样就可以加快收敛并减小震荡。</strong></p>
+<h1 id="5-Adagrad（Adaptive-gradient-algorithm）"><a href="#5-Adagrad（Adaptive-gradient-algorithm）" class="headerlink" title="5. Adagrad（Adaptive gradient algorithm）"></a>5. Adagrad（Adaptive gradient algorithm）</h1><script type="math/tex; mode=display">\theta = \theta - \frac{\eta}{\sqrt{\sum_{\tau=1}^{t}g_{\tau}^2 + \epsilon} * g_t}</script><p>二阶动量$v<em>t = \sum</em>{\tau=1}^{t}g_\tau^2$ ：所有梯度值的平方和。</p>
+<p>思想：</p>
+<ul>
+<li>对经常更新的参数，学习率慢一些；</li>
+<li>对偶尔更新的参数，学习率快一些。</li>
+</ul>
+<p>优点：自适应，不需要人调节</p>
+<p>缺点：学习率越来越小，趋于0</p>
+<h1 id="6-Adam"><a href="#6-Adam" class="headerlink" title="6. Adam"></a>6. Adam</h1><p>结合Momentum及自适应</p>
+<p>具有一阶动量及二阶动量</p>
+<h1 id="7-AdamW"><a href="#7-AdamW" class="headerlink" title="7. AdamW"></a>7. AdamW</h1><p>加入了Weight Decay</p>
+<h1 id="8-参考"><a href="#8-参考" class="headerlink" title="8. 参考"></a>8. 参考</h1><p>1 <a href="https://zhuanlan.zhihu.com/p/55150256" target="_blank" rel="noopener">优化算法Optimizer比较和总结</a></p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>BGD</tag>
+        <tag>SGD</tag>
+        <tag>Momentum</tag>
+        <tag>Adagrad</tag>
+        <tag>RMSProp</tag>
+        <tag>Adam</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字典树</title>
     <url>/2020/08/05/%E5%AD%97%E5%85%B8%E6%A0%91/</url>
     <content><![CDATA[<h1 id="1-字典树（Trie）"><a href="#1-字典树（Trie）" class="headerlink" title="1 字典树（Trie）"></a>1 字典树（Trie）</h1><h1 id="2-实现方法"><a href="#2-实现方法" class="headerlink" title="2 实现方法"></a>2 实现方法</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.root = &#123;&#125;</span><br><span class="line">        <span class="comment"># 特殊标记</span></span><br><span class="line">        self.word_end = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, word: str)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Inserts a word into the trie.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cur_node = self.root</span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> char <span class="keyword">in</span> cur_node:</span><br><span class="line">                cur_node[char] = &#123;&#125;</span><br><span class="line">            cur_node = cur_node[char]</span><br><span class="line">        cur_node[self.word_end] = <span class="literal">True</span></span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, word: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns if the word is in the trie.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cur_node = self.root</span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> char <span class="keyword">not</span> <span class="keyword">in</span> cur_node:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            cur_node = cur_node[char]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> self.word_end <span class="keyword">not</span> <span class="keyword">in</span> cur_node:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">startsWith</span><span class="params">(self, prefix: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns if there is any word in the trie that starts with the given prefix.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cur_node = self.root</span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> prefix:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> char <span class="keyword">in</span> cur_node:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            cur_node = cur_node[char]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your Trie object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = Trie()</span></span><br><span class="line"><span class="comment"># obj.insert(word)</span></span><br><span class="line"><span class="comment"># param_2 = obj.search(word)</span></span><br><span class="line"><span class="comment"># param_3 = obj.startsWith(prefix)</span></span><br></pre></td></tr></table></figure>
