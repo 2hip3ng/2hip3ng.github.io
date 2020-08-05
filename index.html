@@ -294,6 +294,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/05/%E5%AD%97%E5%85%B8%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/05/%E5%AD%97%E5%85%B8%E6%A0%91/" itemprop="url">字典树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-05T10:35:52+08:00">
+                2020-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-08-05T11:04:54+08:00" content="2020-08-05">
+                2020-08-05
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/" itemprop="url" rel="index">
+                    <span itemprop="name">手撕代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-字典树（Trie）"><a href="#1-字典树（Trie）" class="headerlink" title="1 字典树（Trie）"></a>1 字典树（Trie）</h1><h1 id="2-实现方法"><a href="#2-实现方法" class="headerlink" title="2 实现方法"></a>2 实现方法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.root = &#123;&#125;</span><br><span class="line">        <span class="comment"># 特殊标记</span></span><br><span class="line">        self.word_end = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, word: str)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Inserts a word into the trie.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cur_node = self.root</span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> char <span class="keyword">in</span> cur_node:</span><br><span class="line">                cur_node[char] = &#123;&#125;</span><br><span class="line">            cur_node = cur_node[char]</span><br><span class="line">        cur_node[self.word_end] = <span class="literal">True</span></span><br><span class="line">                </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, word: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns if the word is in the trie.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cur_node = self.root</span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> char <span class="keyword">not</span> <span class="keyword">in</span> cur_node:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            cur_node = cur_node[char]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> self.word_end <span class="keyword">not</span> <span class="keyword">in</span> cur_node:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">startsWith</span><span class="params">(self, prefix: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns if there is any word in the trie that starts with the given prefix.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cur_node = self.root</span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> prefix:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> char <span class="keyword">in</span> cur_node:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            cur_node = cur_node[char]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your Trie object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = Trie()</span></span><br><span class="line"><span class="comment"># obj.insert(word)</span></span><br><span class="line"><span class="comment"># param_2 = obj.search(word)</span></span><br><span class="line"><span class="comment"># param_3 = obj.startsWith(prefix)</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/28/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E3%80%81%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1160,8 +1333,8 @@ P(X=x|Y=c_k)  &= P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)} | Y=c_k) \\
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-07-12T23:17:19+08:00" content="2020-07-12">
-                2020-07-12
+              <time itemprop="dateUpdated" datetime="2020-08-05T11:42:49+08:00" content="2020-08-05">
+                2020-08-05
               </time>
             </span>
           
@@ -1218,33 +1391,33 @@ P(X=x|Y=c_k)  &= P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)} | Y=c_k) \\
       
         
           
-            <h1 id="1-梯度下降法"><a href="#1-梯度下降法" class="headerlink" title="1 梯度下降法"></a>1 梯度下降法</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>求解无约束最优化问题的极小值</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>通过不断的迭代，进行目标函数的极小化，直到收敛</p>
-<h2 id="泰勒一阶展开"><a href="#泰勒一阶展开" class="headerlink" title="泰勒一阶展开"></a>泰勒一阶展开</h2><script type="math/tex; mode=display">f(x) = f(x_0) + (x-x_0) f'(x_0)</script><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>极小化 $f(x)$ ，则 $x-x_0 = -f’(x_0) * \lambda$ ，其中 $\lambda &gt; 0 $</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>$ x = x_0  - \lambda * f’(x_0)$ ，其中学习率 $\lambda &gt; 0 $</p>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
+            <h1 id="1-梯度下降法"><a href="#1-梯度下降法" class="headerlink" title="1 梯度下降法"></a>1 梯度下降法</h1><h2 id="1-1-目的"><a href="#1-1-目的" class="headerlink" title="1.1 目的"></a>1.1 目的</h2><p>求解无约束最优化问题的极小值</p>
+<h2 id="1-2-方法"><a href="#1-2-方法" class="headerlink" title="1.2 方法"></a>1.2 方法</h2><p>通过不断的迭代，进行目标函数的极小化，直到收敛</p>
+<h2 id="1-3-泰勒一阶展开"><a href="#1-3-泰勒一阶展开" class="headerlink" title="1.3 泰勒一阶展开"></a>1.3 泰勒一阶展开</h2><script type="math/tex; mode=display">f(x) = f(x_0) + (x-x_0) f'(x_0)</script><h2 id="1-4-思想"><a href="#1-4-思想" class="headerlink" title="1.4 思想"></a>1.4 思想</h2><p>极小化 $f(x)$ ，则 $x-x_0 = -f’(x_0) * \lambda$ ，其中 $\lambda &gt; 0 $</p>
+<h2 id="1-5-结论"><a href="#1-5-结论" class="headerlink" title="1.5 结论"></a>1.5 结论</h2><p>$ x = x_0  - \lambda * f’(x_0)$ ，其中学习率 $\lambda &gt; 0 $</p>
+<h2 id="1-6-应用"><a href="#1-6-应用" class="headerlink" title="1.6 应用"></a>1.6 应用</h2><ul>
 <li>数学问题中，求解极小值</li>
 <li>机器学习中，求解目标函数最优解</li>
 </ul>
-<h1 id="2-牛顿法"><a href="#2-牛顿法" class="headerlink" title="2 牛顿法"></a>2 牛顿法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>牛顿法，又称牛顿迭代法，主要是迭代的方法用于求解方程的根。后应用于无约束问题的最优化。</p>
-<h2 id="解方程"><a href="#解方程" class="headerlink" title="解方程"></a>解方程</h2><p>利用泰勒公式一阶展开，$f(x) = f(x<em>0) + (x-x_0) f’(x_0)$<br>求解方程 $f(x) = 0$， 则  $f(x_0) + (x-x_0) f’(x_0) = 0$<br>推出，$x = x_0  - \frac{f(x_0)}{f’(x_0)}$<br>算法流程：<br>不断迭代 $x</em>{k+1} = x<em>k - \frac{f(x_k)}{f’(x_k)}$，直至 $f(x</em>{k+1}) = 0$ </p>
+<h1 id="2-牛顿法"><a href="#2-牛顿法" class="headerlink" title="2 牛顿法"></a>2 牛顿法</h1><h2 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h2><p>牛顿法，又称牛顿迭代法，主要是迭代的方法用于求解方程的根。后应用于无约束问题的最优化。</p>
+<h2 id="2-2-解方程"><a href="#2-2-解方程" class="headerlink" title="2.2 解方程"></a>2.2 解方程</h2><p>利用泰勒公式一阶展开，$f(x) = f(x<em>0) + (x-x_0) f’(x_0)$<br>求解方程 $f(x) = 0$， 则  $f(x_0) + (x-x_0) f’(x_0) = 0$<br>推出，$x = x_0  - \frac{f(x_0)}{f’(x_0)}$<br>算法流程：<br>不断迭代 $x</em>{k+1} = x<em>k - \frac{f(x_k)}{f’(x_k)}$，直至 $f(x</em>{k+1}) = 0$ </p>
 <p>举例如下：<br>求解$\sqrt2$ ， 保留 5位小数<br>思路：设计 $y = f(x)$， 将$x = \sqrt2$ 代入，$y = 0$， 故 $f(x) = x^2 -2$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mySqrt</span><span class="params">(self, x: int)</span> -&gt; int:</span></span><br><span class="line">        num_pre = x</span><br><span class="line">        num_cur = (num_pre * num_pre + x) / (<span class="number">2</span> * num_pre)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> abs(num_pre-num_cur) &gt; <span class="number">0.0001</span>:</span><br><span class="line">            num_pre = num_cur</span><br><span class="line">            num_cur = (num_pre * num_pre + x) / (<span class="number">2</span> * num_pre)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> num_cur</span><br></pre></td></tr></table></figure>
-<h2 id="求解无约束最优化问题"><a href="#求解无约束最优化问题" class="headerlink" title="求解无约束最优化问题"></a>求解无约束最优化问题</h2><p>利用泰勒公式二阶展开</p>
+<h2 id="2-3-求解无约束最优化问题"><a href="#2-3-求解无约束最优化问题" class="headerlink" title="2.3 求解无约束最优化问题"></a>2.3 求解无约束最优化问题</h2><p>利用泰勒公式二阶展开</p>
 <script type="math/tex; mode=display">f(x) = f(x_0) + (x-x_0) f'(x_0) + \frac{1}{2} (x-x_0)^2 f''(x_0)</script><p>函数$f(x)$ 在 $x_0$有极值的必要条件是 $f’(x_0) = 0$</p>
-<script type="math/tex; mode=display">0 = f'(x) = f'(x_0) + (x-x_0) f''(x_0)</script><script type="math/tex; mode=display">x = x_0 - \frac{ f'(x_0)}{ f''(x_0)}</script><h2 id="最优化问题应用至高维"><a href="#最优化问题应用至高维" class="headerlink" title="最优化问题应用至高维"></a>最优化问题应用至高维</h2><p>引入Hessian矩阵 </p>
+<script type="math/tex; mode=display">0 = f'(x) = f'(x_0) + (x-x_0) f''(x_0)</script><script type="math/tex; mode=display">x = x_0 - \frac{ f'(x_0)}{ f''(x_0)}</script><h2 id="2-4-最优化问题应用至高维"><a href="#2-4-最优化问题应用至高维" class="headerlink" title="2.4 最优化问题应用至高维"></a>2.4 最优化问题应用至高维</h2><p>引入Hessian矩阵 </p>
 <script type="math/tex; mode=display">H(x) = [\frac{\partial^2f}{\partial x_i \partial x_j }]_{n*n}</script><script type="math/tex; mode=display">x_{k+1} = x_k - \frac{g_k}{H_k} =  x_k - H_k^{-1} g_k</script><p>其中，$g_k$ 是一阶导（梯度），$H_k$ 是Hessian矩阵 </p>
 <h1 id="3-拟牛顿法"><a href="#3-拟牛顿法" class="headerlink" title="3 拟牛顿法"></a>3 拟牛顿法</h1><p>避免每次都要计算Hessian矩阵，采用正定矩阵近似方法实现</p>
-<h1 id="4-结论"><a href="#4-结论" class="headerlink" title="4 结论"></a>4 结论</h1><h2 id="速记"><a href="#速记" class="headerlink" title="速记"></a>速记</h2><ul>
+<h1 id="4-结论"><a href="#4-结论" class="headerlink" title="4 结论"></a>4 结论</h1><h2 id="4-1-速记"><a href="#4-1-速记" class="headerlink" title="4.1 速记"></a>4.1 速记</h2><ul>
 <li>梯度下降时，迭代 $ x = x_0  - \lambda * f’(x_0)$ 直至收敛，其中学习率 $\lambda &gt; 0 $</li>
 <li>牛顿法解方程时，迭代 $ x = x_0 - \frac{f(x_0)}{f’(x_0)} $，直至收敛</li>
 <li>牛顿法最优化时，迭代 $ x = x_0 - \frac{ f’(x_0)}{ f’’(x_0)}$ 直至收敛</li>
 </ul>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><ul>
+<h2 id="4-2-对比"><a href="#4-2-对比" class="headerlink" title="4.2 对比"></a>4.2 对比</h2><ul>
+<li>梯度下降法靠近极小值，收敛速度慢；通过步长控制，极值点震荡</li>
 <li>牛顿法是二阶收敛，梯度下降法是一阶收敛，牛顿法收敛速度快</li>
 <li>牛顿法容易陷入局部最优</li>
-<li>牛顿法要同时求出梯度和Hessian矩阵，计算量大且不好计算</li>
-<li>当输入向量维度$N$较大时，Hessian矩阵的大小时 $N*N$，需要内存和显存非常大</li>
+<li>牛顿法要同时求出梯度和Hessian矩阵，计算量大且不好计算；当输入向量维度$N$较大时，Hessian矩阵的大小时 $N*N$，需要内存和显存非常大</li>
 </ul>
 
           
@@ -1777,171 +1950,6 @@ P(X=x|Y=c_k)  &= P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)} | Y=c_k) \\
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/10/%E6%9D%A1%E4%BB%B6%E9%9A%8F%E6%9C%BA%E5%9C%BA%EF%BC%88Conditional-Random-Field-CRF%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="2hip3ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2hip3ng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/10/%E6%9D%A1%E4%BB%B6%E9%9A%8F%E6%9C%BA%E5%9C%BA%EF%BC%88Conditional-Random-Field-CRF%EF%BC%89/" itemprop="url">条件随机场（Conditional Random Field, CRF）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-10T17:58:53+08:00">
-                2020-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-07-10T22:15:59+08:00" content="2020-07-10">
-                2020-07-10
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>条件随机场（Conditional Random Field，CRF）是给定一组输入随机变量条件下另一组输出变量的条件概率分布模型，其特点是输出随机变量构成了马尔可夫随机场。</p>
-<h1 id="1-概率无向图模型"><a href="#1-概率无向图模型" class="headerlink" title="1 概率无向图模型"></a>1 概率无向图模型</h1><pre><code>引言：概率无向图模型，又称为马尔可夫随机场，是一个可以由无向图
-表示的联合概率分布。
-</code></pre><h2 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h2><p>设有联合概率分布 $P(Y)$ , 由无向图 $G=(V,E)$ 表示，在图G中，结点表示随机变量，边表示随机变量之间的依赖关系。 如果联合概率分布 $P(Y)$   满足成对、局部或全局马尔可夫性，就称此联合概率分布为概率无向图模型，或马尔可夫随机场（Markov Random Field）。</p>
-<ul>
-<li>成对马尔可夫性：</li>
-<li>局部马尔可夫性：</li>
-<li>全局马尔可夫性：</li>
-</ul>
-<h2 id="1-2-概率无线图模型的因子分解"><a href="#1-2-概率无线图模型的因子分解" class="headerlink" title="1.2 概率无线图模型的因子分解"></a>1.2 概率无线图模型的因子分解</h2><h3 id="1-2-1-团与最大团"><a href="#1-2-1-团与最大团" class="headerlink" title="1.2.1 团与最大团"></a>1.2.1 团与最大团</h3><h3 id="1-2-2-因子分解"><a href="#1-2-2-因子分解" class="headerlink" title="1.2.2 因子分解"></a>1.2.2 因子分解</h3><h2 id="2-条件随机场的定义与形式"><a href="#2-条件随机场的定义与形式" class="headerlink" title="2 条件随机场的定义与形式"></a>2 条件随机场的定义与形式</h2><h2 id="2-1-条件随机场的定义"><a href="#2-1-条件随机场的定义" class="headerlink" title="2.1 条件随机场的定义"></a>2.1 条件随机场的定义</h2><h3 id="2-1-1-整体架构"><a href="#2-1-1-整体架构" class="headerlink" title="2.1.1 整体架构"></a>2.1.1 整体架构</h3><ul>
-<li>条件随机场是给定随机变量 $X$ 条件下，随机变量 $Y$ 的马尔可夫随机场。</li>
-<li>线性链条件随机场可用于标注问题。这时，在条件概率模型 $P(Y|X)$ 中，$Y$ 是输出变量，表示标记序列，$X$ 是输入变量，表示需要标注的观测序列，也把标记序列称为状态序列。</li>
-<li>学习时，利用训练数据集通过极大似然估计或正则化的极大似然估计得到条件概率模型 $P\hat (Y|X)$ 。</li>
-<li>预测时，对于给定的输入序列 $x$，求出条件概率 $P\hat(y|x)$ 最大的输出序列 $\hat{y} $ </li>
-</ul>
-<h3 id="2-1-2-条件随机场的定义"><a href="#2-1-2-条件随机场的定义" class="headerlink" title="2.1.2 条件随机场的定义"></a>2.1.2 条件随机场的定义</h3><h3 id="2-1-3-线性链条件随机场的定义"><a href="#2-1-3-线性链条件随机场的定义" class="headerlink" title="2.1.3 线性链条件随机场的定义"></a>2.1.3 线性链条件随机场的定义</h3><h2 id="2-2-条件随机场的参数化形式"><a href="#2-2-条件随机场的参数化形式" class="headerlink" title="2.2 条件随机场的参数化形式"></a>2.2 条件随机场的参数化形式</h2><h2 id="2-3-条件随机场的简化形式"><a href="#2-3-条件随机场的简化形式" class="headerlink" title="2.3 条件随机场的简化形式"></a>2.3 条件随机场的简化形式</h2><h2 id="2-4-条件随机场的矩阵形式"><a href="#2-4-条件随机场的矩阵形式" class="headerlink" title="2.4 条件随机场的矩阵形式"></a>2.4 条件随机场的矩阵形式</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1996,7 +2004,7 @@ P(X=x|Y=c_k)  &= P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)} | Y=c_k) \\
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2007,7 +2015,7 @@ P(X=x|Y=c_k)  &= P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)} | Y=c_k) \\
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2018,7 +2026,7 @@ P(X=x|Y=c_k)  &= P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)} | Y=c_k) \\
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

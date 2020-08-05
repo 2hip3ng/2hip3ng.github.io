@@ -294,6 +294,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/10/%E6%9D%A1%E4%BB%B6%E9%9A%8F%E6%9C%BA%E5%9C%BA%EF%BC%88Conditional-Random-Field-CRF%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/10/%E6%9D%A1%E4%BB%B6%E9%9A%8F%E6%9C%BA%E5%9C%BA%EF%BC%88Conditional-Random-Field-CRF%EF%BC%89/" itemprop="url">条件随机场（Conditional Random Field, CRF）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-10T17:58:53+08:00">
+                2020-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-07-10T22:15:59+08:00" content="2020-07-10">
+                2020-07-10
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>条件随机场（Conditional Random Field，CRF）是给定一组输入随机变量条件下另一组输出变量的条件概率分布模型，其特点是输出随机变量构成了马尔可夫随机场。</p>
+<h1 id="1-概率无向图模型"><a href="#1-概率无向图模型" class="headerlink" title="1 概率无向图模型"></a>1 概率无向图模型</h1><pre><code>引言：概率无向图模型，又称为马尔可夫随机场，是一个可以由无向图
+表示的联合概率分布。
+</code></pre><h2 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h2><p>设有联合概率分布 $P(Y)$ , 由无向图 $G=(V,E)$ 表示，在图G中，结点表示随机变量，边表示随机变量之间的依赖关系。 如果联合概率分布 $P(Y)$   满足成对、局部或全局马尔可夫性，就称此联合概率分布为概率无向图模型，或马尔可夫随机场（Markov Random Field）。</p>
+<ul>
+<li>成对马尔可夫性：</li>
+<li>局部马尔可夫性：</li>
+<li>全局马尔可夫性：</li>
+</ul>
+<h2 id="1-2-概率无线图模型的因子分解"><a href="#1-2-概率无线图模型的因子分解" class="headerlink" title="1.2 概率无线图模型的因子分解"></a>1.2 概率无线图模型的因子分解</h2><h3 id="1-2-1-团与最大团"><a href="#1-2-1-团与最大团" class="headerlink" title="1.2.1 团与最大团"></a>1.2.1 团与最大团</h3><h3 id="1-2-2-因子分解"><a href="#1-2-2-因子分解" class="headerlink" title="1.2.2 因子分解"></a>1.2.2 因子分解</h3><h2 id="2-条件随机场的定义与形式"><a href="#2-条件随机场的定义与形式" class="headerlink" title="2 条件随机场的定义与形式"></a>2 条件随机场的定义与形式</h2><h2 id="2-1-条件随机场的定义"><a href="#2-1-条件随机场的定义" class="headerlink" title="2.1 条件随机场的定义"></a>2.1 条件随机场的定义</h2><h3 id="2-1-1-整体架构"><a href="#2-1-1-整体架构" class="headerlink" title="2.1.1 整体架构"></a>2.1.1 整体架构</h3><ul>
+<li>条件随机场是给定随机变量 $X$ 条件下，随机变量 $Y$ 的马尔可夫随机场。</li>
+<li>线性链条件随机场可用于标注问题。这时，在条件概率模型 $P(Y|X)$ 中，$Y$ 是输出变量，表示标记序列，$X$ 是输入变量，表示需要标注的观测序列，也把标记序列称为状态序列。</li>
+<li>学习时，利用训练数据集通过极大似然估计或正则化的极大似然估计得到条件概率模型 $P\hat (Y|X)$ 。</li>
+<li>预测时，对于给定的输入序列 $x$，求出条件概率 $P\hat(y|x)$ 最大的输出序列 $\hat{y} $ </li>
+</ul>
+<h3 id="2-1-2-条件随机场的定义"><a href="#2-1-2-条件随机场的定义" class="headerlink" title="2.1.2 条件随机场的定义"></a>2.1.2 条件随机场的定义</h3><h3 id="2-1-3-线性链条件随机场的定义"><a href="#2-1-3-线性链条件随机场的定义" class="headerlink" title="2.1.3 线性链条件随机场的定义"></a>2.1.3 线性链条件随机场的定义</h3><h2 id="2-2-条件随机场的参数化形式"><a href="#2-2-条件随机场的参数化形式" class="headerlink" title="2.2 条件随机场的参数化形式"></a>2.2 条件随机场的参数化形式</h2><h2 id="2-3-条件随机场的简化形式"><a href="#2-3-条件随机场的简化形式" class="headerlink" title="2.3 条件随机场的简化形式"></a>2.3 条件随机场的简化形式</h2><h2 id="2-4-条件随机场的矩阵形式"><a href="#2-4-条件随机场的矩阵形式" class="headerlink" title="2.4 条件随机场的矩阵形式"></a>2.4 条件随机场的矩阵形式</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/08/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B%EF%BC%88Hidden-Markov-Model-HMM%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -532,8 +697,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-06-16T23:06:42+08:00" content="2020-06-16">
-                2020-06-16
+              <time itemprop="dateUpdated" datetime="2020-08-04T13:41:52+08:00" content="2020-08-04">
+                2020-08-04
               </time>
             </span>
           
@@ -590,7 +755,10 @@
       
         
           
-            <h1 id="1-并查集概念"><a href="#1-并查集概念" class="headerlink" title="1.并查集概念"></a>1.并查集概念</h1><h1 id="2-用处"><a href="#2-用处" class="headerlink" title="2. 用处"></a>2. 用处</h1><h1 id="3-优缺点"><a href="#3-优缺点" class="headerlink" title="3. 优缺点"></a>3. 优缺点</h1><h1 id="4-实现方法"><a href="#4-实现方法" class="headerlink" title="4. 实现方法"></a>4. 实现方法</h1><h2 id="4-1-思想"><a href="#4-1-思想" class="headerlink" title="4.1 思想"></a>4.1 思想</h2><h2 id="4-2-API"><a href="#4-2-API" class="headerlink" title="4.2 API"></a>4.2 API</h2><h2 id="4-3-具体实现"><a href="#4-3-具体实现" class="headerlink" title="4.3 具体实现"></a>4.3 具体实现</h2><h2 id="4-4-Todo"><a href="#4-4-Todo" class="headerlink" title="4.4 Todo"></a>4.4 Todo</h2>
+            <h1 id="1-并查集概念"><a href="#1-并查集概念" class="headerlink" title="1.并查集概念"></a>1.并查集概念</h1><p>并查集，在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。</p>
+<h1 id="2-实现方法"><a href="#2-实现方法" class="headerlink" title="2. 实现方法"></a>2. 实现方法</h1><h2 id="2-1-API"><a href="#2-1-API" class="headerlink" title="2.1 API"></a>2.1 API</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.parents = []</span><br><span class="line">        self.ranks = []</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_connected</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-2-具体实现"><a href="#2-2-具体实现" class="headerlink" title="2.2 具体实现"></a>2.2 具体实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.parents = []</span><br><span class="line">        self.ranks = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="comment"># 尾递归</span></span><br><span class="line">        <span class="keyword">if</span> x != self.parents[x]:</span><br><span class="line">            self.parents[x] = self.find(self.parents[x])</span><br><span class="line">        <span class="keyword">return</span> self.parents[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_connected</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.find(x) == self.find(y)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        parent_x = self.find(x)</span><br><span class="line">        parent_y = self.find(y)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 加入ranks 防止树过高</span></span><br><span class="line">        rank_x = self.ranks[parent_x]</span><br><span class="line">        rank_y = self.ranks[parent_y]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> rank_x == rank_y:</span><br><span class="line">            self.parents[parent_y] = parent_x</span><br><span class="line">            self.ranks[parent_x] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> rank_x &gt; rank_y:</span><br><span class="line">            self.parents[parent_y] = parent_x</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.parents[parent_x] = parent_y</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-Todo"><a href="#2-3-Todo" class="headerlink" title="2.3 Todo"></a>2.3 Todo</h2>
           
         
       
@@ -1828,156 +1996,6 @@ P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/06/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="2hip3ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2hip3ng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/06/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E3%80%81%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8%E3%80%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" itemprop="url">梯度消失、梯度爆炸、解决方法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-06T20:53:33+08:00">
-                2020-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-03-06T20:55:58+08:00" content="2020-03-06">
-                2020-03-06
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="梯度消失"><a href="#梯度消失" class="headerlink" title="梯度消失"></a>梯度消失</h2><h2 id="梯度爆炸"><a href="#梯度爆炸" class="headerlink" title="梯度爆炸"></a>梯度爆炸</h2><h2 id="梯度消失解决方法"><a href="#梯度消失解决方法" class="headerlink" title="梯度消失解决方法"></a>梯度消失解决方法</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2032,7 +2050,7 @@ P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2043,7 +2061,7 @@ P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2054,7 +2072,7 @@ P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
