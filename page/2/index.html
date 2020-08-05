@@ -815,7 +815,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/16/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%9A%84python%E5%AE%9E%E7%8E%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="2hip3ng">
@@ -834,7 +834,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/06/16/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%9A%84python%E5%AE%9E%E7%8E%B0/" itemprop="url">并查集的python实现</a></h1>
+                <a class="post-title-link" href="/2020/06/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url">并查集</a></h1>
         
 
         <div class="post-meta">
@@ -859,8 +859,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-08-04T13:41:52+08:00" content="2020-08-04">
-                2020-08-04
+              <time itemprop="dateUpdated" datetime="2020-08-05T14:51:37+08:00" content="2020-08-05">
+                2020-08-05
               </time>
             </span>
           
@@ -1012,8 +1012,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-04-04T21:26:05+08:00" content="2020-04-04">
-                2020-04-04
+              <time itemprop="dateUpdated" datetime="2020-08-05T15:00:26+08:00" content="2020-08-05">
+                2020-08-05
               </time>
             </span>
           
@@ -1070,26 +1070,32 @@
       
         
           
-            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Todo</p>
-<h2 id="word2vec"><a href="#word2vec" class="headerlink" title="word2vec"></a>word2vec</h2><p>Todo</p>
-<h2 id="glove"><a href="#glove" class="headerlink" title="glove"></a>glove</h2><p>Todo</p>
-<h2 id="elmo"><a href="#elmo" class="headerlink" title="elmo"></a>elmo</h2><p>Todo</p>
-<h2 id="gpt"><a href="#gpt" class="headerlink" title="gpt"></a>gpt</h2><p>Todo</p>
-<h2 id="gpt2"><a href="#gpt2" class="headerlink" title="gpt2"></a>gpt2</h2><p>Todo</p>
-<h2 id="bert"><a href="#bert" class="headerlink" title="bert"></a>bert</h2><p>Todo</p>
-<h2 id="roberta"><a href="#roberta" class="headerlink" title="roberta"></a>roberta</h2><h3 id="静态Masking-vs-动态Masking"><a href="#静态Masking-vs-动态Masking" class="headerlink" title="静态Masking vs 动态Masking"></a>静态Masking vs 动态Masking</h3><ul>
+            <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0. 引言"></a>0. 引言</h1><p>Todo</p>
+<h1 id="1-word2vec"><a href="#1-word2vec" class="headerlink" title="1. word2vec"></a>1. word2vec</h1><p>Todo</p>
+<h1 id="2-glove"><a href="#2-glove" class="headerlink" title="2. glove"></a>2. glove</h1><p>Todo</p>
+<h1 id="3-elmo"><a href="#3-elmo" class="headerlink" title="3. elmo"></a>3. elmo</h1><p>Todo</p>
+<h1 id="4-gpt"><a href="#4-gpt" class="headerlink" title="4. gpt"></a>4. gpt</h1><p>Todo</p>
+<h1 id="5-gpt2"><a href="#5-gpt2" class="headerlink" title="5. gpt2"></a>5. gpt2</h1><p>Todo</p>
+<h1 id="6-bert"><a href="#6-bert" class="headerlink" title="6. bert"></a>6. bert</h1><p>Todo</p>
+<h1 id="7-roberta"><a href="#7-roberta" class="headerlink" title="7. roberta"></a>7. roberta</h1><h2 id="7-1-静态Masking-vs-动态Masking"><a href="#7-1-静态Masking-vs-动态Masking" class="headerlink" title="7.1 静态Masking vs 动态Masking"></a>7.1 静态Masking vs 动态Masking</h2><ul>
 <li>静态Masking：Bert对每一个序列随机选择15%的Tokens替换成[MASK]，为了消除与下游任务的不匹配，还对这15%的Tokens进行（1）80%的时间替换成[MASK]；（2）10%的时间不变；（3）10%的时间替换成其他词。但整个训练过程，这15%的Tokens一旦被选择就不再改变，也就是说从一开始随机选择了这15%的Tokens，之后的N个epoch里都不再改变了。</li>
 <li>动态Masking：RoBERTa一开始把预训练的数据复制10份，每一份都随机选择15%的Tokens进行Masking，也就是说，同样的一句话有10种不同的mask方式。然后每份数据都训练N/10个epoch。这就相当于在这N个epoch的训练中，每个序列的被mask的tokens是会变化的。</li>
 </ul>
-<h3 id="with-NSP-vs-without-NSP"><a href="#with-NSP-vs-without-NSP" class="headerlink" title="with NSP vs without NSP"></a>with NSP vs without NSP</h3><p>原本的Bert为了捕捉句子之间的关系，使用了NSP任务进行预训练，就是输入一对句子A和B，判断这两个句子是否是连续的。在训练的数据中，50%的B是A的下一个句子，50%的B是随机抽取的。而RoBERTa去除了NSP，而是每次输入连续的多个句子，直到最大长度512（可以跨文章）。</p>
-<h3 id="更大的mini-batch"><a href="#更大的mini-batch" class="headerlink" title="更大的mini-batch"></a>更大的mini-batch</h3><p>原本的BERTbase 的batch size是256，训练1M个steps。RoBERTa的batch size为8k。</p>
-<h3 id="更多的数据，更长时间的训练"><a href="#更多的数据，更长时间的训练" class="headerlink" title="更多的数据，更长时间的训练"></a>更多的数据，更长时间的训练</h3><p>RoBERTa用了更多的数据。性能确实再次彪升。当然，也需要配合更长时间的训练。</p>
-<h2 id="albert"><a href="#albert" class="headerlink" title="albert"></a>albert</h2><h3 id="对Embedding因式分解"><a href="#对Embedding因式分解" class="headerlink" title="对Embedding因式分解"></a>对Embedding因式分解</h3><p>ALBERT采用了一种因式分解的方法来降低参数量。首先把one-hot向量映射到一个低维度的空间，大小为E，然后再映射到一个高维度的空间，说白了就是先经过一个维度很低的 embedding matrix，然后再经过一个高维度matrix把维度变到隐藏层的空间内，从而把参数量从$O(V×H)O(V×H)O(V×H)$降低到了$O(V×E+E×H)O(V×E+E×H)O(V×E+E×H) $，当 $E&lt;&lt;H$时参数量减少的很明显。</p>
-<h3 id="跨层的参数共享（Cross-layer-parameter-sharing）"><a href="#跨层的参数共享（Cross-layer-parameter-sharing）" class="headerlink" title="跨层的参数共享（Cross-layer parameter sharing）"></a>跨层的参数共享（Cross-layer parameter sharing）</h3><p>全连接层与attention层都进行参数共享，也就是说共享encoder内的所有参数，同样量级下的Transformer采用该方案后实际上效果是有下降的，但是参数量减少了很多，训练速度也提升了很多。</p>
-<h3 id="句间连贯（Inter-sentence-coherence-loss）"><a href="#句间连贯（Inter-sentence-coherence-loss）" class="headerlink" title="句间连贯（Inter-sentence coherence loss）"></a>句间连贯（Inter-sentence coherence loss）</h3><p>在ALBERT中，为了只保留一致性任务去除主题识别的影响，提出了一个新的任务 sentence-order prediction（SOP），SOP的正样本和NSP的获取方式是一样的，负样本把正样本的顺序反转即可。SOP因为实在同一个文档中选的，其只关注句子的顺序并没有主题方面的影响。并且SOP能解决NSP的任务，但是NSP并不能解决SOP的任务，该任务的添加给最终的结果提升了一个点。</p>
-<h3 id="移除dropout"><a href="#移除dropout" class="headerlink" title="移除dropout"></a>移除dropout</h3><p>ALBERT在训练了100w步之后，模型依旧没有过拟合，于是乎作者果断移除了dropout，没想到对下游任务的效果竟然有一定的提升。这也是业界第一次发现dropout对大规模的预训练模型会造成负面影响。</p>
-<h2 id="distillBert"><a href="#distillBert" class="headerlink" title="distillBert"></a>distillBert</h2><p>Todo</p>
-<h2 id="xlnet"><a href="#xlnet" class="headerlink" title="xlnet"></a>xlnet</h2><p>Todo</p>
+<h2 id="7-2-with-NSP-vs-without-NSP"><a href="#7-2-with-NSP-vs-without-NSP" class="headerlink" title="7.2  with NSP vs without NSP"></a>7.2  with NSP vs without NSP</h2><p>原本的Bert为了捕捉句子之间的关系，使用了NSP任务进行预训练，就是输入一对句子A和B，判断这两个句子是否是连续的。在训练的数据中，50%的B是A的下一个句子，50%的B是随机抽取的。而RoBERTa去除了NSP，而是每次输入连续的多个句子，直到最大长度512（可以跨文章）。</p>
+<h3 id="7-3-更大的mini-batch"><a href="#7-3-更大的mini-batch" class="headerlink" title="7.3  更大的mini-batch"></a>7.3  更大的mini-batch</h3><p>原本的BERTbase 的batch size是256，训练1M个steps。RoBERTa的batch size为8k。</p>
+<h3 id="7-4-更多的数据，更长时间的训练"><a href="#7-4-更多的数据，更长时间的训练" class="headerlink" title="7.4  更多的数据，更长时间的训练"></a>7.4  更多的数据，更长时间的训练</h3><p>RoBERTa用了更多的数据。性能确实再次彪升。当然，也需要配合更长时间的训练。</p>
+<h1 id="8-Albert"><a href="#8-Albert" class="headerlink" title="8. Albert"></a>8. Albert</h1><h3 id="8-1-对Embedding因式分解"><a href="#8-1-对Embedding因式分解" class="headerlink" title="8.1 对Embedding因式分解"></a>8.1 对Embedding因式分解</h3><p>ALBERT采用了一种因式分解的方法来降低参数量。首先把one-hot向量映射到一个低维度的空间，大小为E，然后再映射到一个高维度的空间，说白了就是先经过一个维度很低的 embedding matrix，然后再经过一个高维度matrix把维度变到隐藏层的空间内，从而把参数量从$O(V×H)O(V×H)O(V×H)$降低到了$O(V×E+E×H)O(V×E+E×H)O(V×E+E×H) $，当 $E&lt;&lt;H$时参数量减少的很明显。</p>
+<h3 id="8-2-跨层的参数共享（Cross-layer-parameter-sharing）"><a href="#8-2-跨层的参数共享（Cross-layer-parameter-sharing）" class="headerlink" title="8.2 跨层的参数共享（Cross-layer parameter sharing）"></a>8.2 跨层的参数共享（Cross-layer parameter sharing）</h3><p>全连接层与attention层都进行参数共享，也就是说共享encoder内的所有参数，同样量级下的Transformer采用该方案后实际上效果是有下降的，但是参数量减少了很多，训练速度也提升了很多。</p>
+<h3 id="8-3-句间连贯（Inter-sentence-coherence-loss）"><a href="#8-3-句间连贯（Inter-sentence-coherence-loss）" class="headerlink" title="8.3 句间连贯（Inter-sentence coherence loss）"></a>8.3 句间连贯（Inter-sentence coherence loss）</h3><p>在ALBERT中，为了只保留一致性任务去除主题识别的影响，提出了一个新的任务 sentence-order prediction（SOP），SOP的正样本和NSP的获取方式是一样的，负样本把正样本的顺序反转即可。SOP因为实在同一个文档中选的，其只关注句子的顺序并没有主题方面的影响。并且SOP能解决NSP的任务，但是NSP并不能解决SOP的任务，该任务的添加给最终的结果提升了一个点。</p>
+<h3 id="8-4-移除dropout"><a href="#8-4-移除dropout" class="headerlink" title="8.4 移除dropout"></a>8.4 移除dropout</h3><p>ALBERT在训练了100w步之后，模型依旧没有过拟合，于是乎作者果断移除了dropout，没想到对下游任务的效果竟然有一定的提升。这也是业界第一次发现dropout对大规模的预训练模型会造成负面影响。</p>
+<h1 id="9-DistillBert"><a href="#9-DistillBert" class="headerlink" title="9. DistillBert"></a>9. DistillBert</h1><p>Todo</p>
+<h1 id="10-xlnet"><a href="#10-xlnet" class="headerlink" title="10. xlnet"></a>10. xlnet</h1><ul>
+<li><p>自回归 vs 自编码，通过全排列及mask实现</p>
+</li>
+<li><p>Bert输入存在mask噪声，输出条件独立，缺乏生成能力</p>
+</li>
+<li>双流Attention，自己预测自己，自己又不能看见自己</li>
+</ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://www.jianshu.com/p/eddf04ba8545" target="_blank" rel="noopener">改进版的RoBERTa到底改进了什么？</a></li>
 <li><a href="https://blog.csdn.net/u012526436/article/details/101924049" target="_blank" rel="noopener">一文揭开ALBERT的神秘面纱</a></li>
