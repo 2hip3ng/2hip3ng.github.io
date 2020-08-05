@@ -171,8 +171,14 @@ P(X=x|Y=c_k)  &= P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)} | Y=c_k) \\
 <li>机器学习中，求解目标函数最优解</li>
 </ul>
 <h1 id="2-牛顿法"><a href="#2-牛顿法" class="headerlink" title="2 牛顿法"></a>2 牛顿法</h1><h2 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h2><p>牛顿法，又称牛顿迭代法，主要是迭代的方法用于求解方程的根。后应用于无约束问题的最优化。</p>
-<h2 id="2-2-解方程"><a href="#2-2-解方程" class="headerlink" title="2.2 解方程"></a>2.2 解方程</h2><p>利用泰勒公式一阶展开，$f(x) = f(x<em>0) + (x-x_0) f’(x_0)$<br>求解方程 $f(x) = 0$， 则  $f(x_0) + (x-x_0) f’(x_0) = 0$<br>推出，$x = x_0  - \frac{f(x_0)}{f’(x_0)}$<br>算法流程：<br>不断迭代 $x</em>{k+1} = x<em>k - \frac{f(x_k)}{f’(x_k)}$，直至 $f(x</em>{k+1}) = 0$ </p>
-<p>举例如下：<br>求解$\sqrt2$ ， 保留 5位小数<br>思路：设计 $y = f(x)$， 将$x = \sqrt2$ 代入，$y = 0$， 故 $f(x) = x^2 -2$</p>
+<h2 id="2-2-解方程"><a href="#2-2-解方程" class="headerlink" title="2.2 解方程"></a>2.2 解方程</h2><p>利用泰勒公式一阶展开，$f(x) = f(x_0) + (x-x_0) f’(x_0)$   </p>
+<p>求解方程 $f(x) = 0$， 则  $f(x_0) + (x-x_0) f’(x_0) = 0$    </p>
+<p>推出，$x = x_0  - \frac{f(x_0)}{f’(x_0)}$    </p>
+<p>算法流程：  </p>
+<p>不断迭代 $x_{k+1} = x_k - \frac{f(x_k)}{f’(x_k)}$，</p>
+<p>直至 $f(x_{k+1}) = 0$ </p>
+<p>举例如下：  </p>
+<p>求解$\sqrt2$ ， 保留 5位小数<br>思路：设计 $y = f(x)$， 将$x = \sqrt2$ 代入，$y = 0$， 故 $f(x) = x^2 -2$</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mySqrt</span><span class="params">(self, x: int)</span> -&gt; int:</span></span><br><span class="line">        num_pre = x</span><br><span class="line">        num_cur = (num_pre * num_pre + x) / (<span class="number">2</span> * num_pre)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> abs(num_pre-num_cur) &gt; <span class="number">0.0001</span>:</span><br><span class="line">            num_pre = num_cur</span><br><span class="line">            num_cur = (num_pre * num_pre + x) / (<span class="number">2</span> * num_pre)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> num_cur</span><br></pre></td></tr></table></figure>
 <h2 id="2-3-求解无约束最优化问题"><a href="#2-3-求解无约束最优化问题" class="headerlink" title="2.3 求解无约束最优化问题"></a>2.3 求解无约束最优化问题</h2><p>利用泰勒公式二阶展开</p>
 <script type="math/tex; mode=display">f(x) = f(x_0) + (x-x_0) f'(x_0) + \frac{1}{2} (x-x_0)^2 f''(x_0)</script><p>函数$f(x)$ 在 $x_0$有极值的必要条件是 $f’(x_0) = 0$</p>
