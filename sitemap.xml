@@ -256,20 +256,6 @@
   </url>
   
   <url>
-    <loc>http://2hip3ng.github.io/tags/ResNet/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://2hip3ng.github.io/tags/LSTM/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
@@ -292,6 +278,34 @@
   
   <url>
     <loc>http://2hip3ng.github.io/tags/GRU/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/ResNet/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/TF-IDF/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/TextRank/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -326,14 +340,7 @@
   </url>
   
   <url>
-    <loc>http://2hip3ng.github.io/tags/TF-IDF/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/TextRank/</loc>
+    <loc>http://2hip3ng.github.io/tags/%E5%87%A0%E4%BD%95%E6%A6%82%E7%8E%87/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -382,13 +389,6 @@
   </url>
   
   <url>
-    <loc>http://2hip3ng.github.io/tags/%E5%87%A0%E4%BD%95%E6%A6%82%E7%8E%87/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://2hip3ng.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
@@ -410,13 +410,6 @@
   </url>
   
   <url>
-    <loc>http://2hip3ng.github.io/tags/Trie/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://2hip3ng.github.io/tags/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
@@ -425,6 +418,20 @@
   
   <url>
     <loc>http://2hip3ng.github.io/tags/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/Trie/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -466,41 +473,6 @@
   </url>
   
   <url>
-    <loc>http://2hip3ng.github.io/tags/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E5%A8%83/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://2hip3ng.github.io/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
@@ -516,6 +488,20 @@
   
   <url>
     <loc>http://2hip3ng.github.io/tags/%E6%8B%9F%E7%89%9B%E9%A1%BF%E6%B3%95/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E5%A8%83/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -550,6 +536,20 @@
   </url>
   
   <url>
+    <loc>http://2hip3ng.github.io/tags/%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://2hip3ng.github.io/tags/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
@@ -565,6 +565,48 @@
   
   <url>
     <loc>http://2hip3ng.github.io/tags/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/Logistic-Regression/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/LR/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/Machine-Learning/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/HMM/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://2hip3ng.github.io/tags/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -606,42 +648,7 @@
   </url>
   
   <url>
-    <loc>http://2hip3ng.github.io/tags/HMM/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/Logistic-Regression/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/LR/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://2hip3ng.github.io/tags/Machine-Learning/</loc>
+    <loc>http://2hip3ng.github.io/tags/NLP%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -717,13 +724,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://2hip3ng.github.io/tags/NLP%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2020-08-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
@@ -755,14 +755,14 @@
   </url>
   
   <url>
-    <loc>http://2hip3ng.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://2hip3ng.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://2hip3ng.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <loc>http://2hip3ng.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2020-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
