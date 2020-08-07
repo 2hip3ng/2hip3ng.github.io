@@ -296,6 +296,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/03/17/%E8%93%84%E6%B0%B4%E6%B1%A0%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/17/%E8%93%84%E6%B0%B4%E6%B1%A0%E7%AE%97%E6%B3%95/" itemprop="url">蓄水池抽样算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-17T09:47:56+08:00">
+                2020-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-03-17T10:42:55+08:00" content="2020-03-17">
+                2020-03-17
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择一个数据？<br></li>
+<li>解法：我们以概率1选择第一个数据，以1/2的概率选择第二个数据，以此类推，以1/m的概率选择第m个对象（如果后面某一数据一旦选中，替换掉以前选中的数据）。当所有数据流过时，每个对象具有相同的被选中的概率1/n。<br></li>
+<li>证明：<script type="math/tex">P_m = \frac{1}{m} \cdot \frac{m}{m+1} \cdot \frac{m+1}{m+2} \cdot *** \cdot \frac{n-2}{n-1} \cdot \frac{n-1}{n} = \frac{1}{n}</script></li>
+<li><p>Python代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n)</span>:</span></span><br><span class="line">    res = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        num = random.randint(<span class="number">1</span>, i):</span><br><span class="line">        <span class="keyword">if</span> i == num:</span><br><span class="line">            res = i</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="蓄水池抽样"><a href="#蓄水池抽样" class="headerlink" title="蓄水池抽样"></a>蓄水池抽样</h2><ul>
+<li>问题：流式数据（Streaming Data），数据长度为n但不知道，如何从中等概率随机选择k（k &lt; n）个数据？</li>
+<li>解法：先选中前k个数据（当作一个蓄水池），然后以k/(k+1)的概率选择第k+1个数据，以k/(k+2)的概率选择第k+2个数据，以此类推以k/m的概率选择第m个数据，一旦后面有某个数据被选中，则随机替换蓄水池中的一个数据。最终每个数据被选中的概率均为k/n。</li>
+<li>证明：<script type="math/tex; mode=display">
+\begin{align}
+P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2-k}{m+2} +\frac{k}{m+2}\frac{k-1}{k}) ...(\frac{n-k}{n} +\frac{k}{n}\frac{k-1}{k})  \\
+ &= \frac{k}{n}
+\end{align}</script></li>
+<li>Python代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sample</span><span class="params">(n, k)</span>:</span></span><br><span class="line">    res = [<span class="number">0</span>] * k</span><br><span class="line">    <span class="keyword">for</span> i range(k):</span><br><span class="line">        res[i] = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i range(k, n):</span><br><span class="line">        num = random.randint(<span class="number">0</span>, i)</span><br><span class="line">        <span class="keyword">if</span> num &lt; k:</span><br><span class="line">            res[num]  = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.jianshu.com/p/87bc058b762e" target="_blank" rel="noopener">蓄水池抽样</a></li>
+<li><a href="https://www.jianshu.com/p/7a9ea6ece2af" target="_blank" rel="noopener">蓄水池抽样算法(Reservoir Sampling)</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/03/13/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1902,182 +2075,11 @@ $$odds=\frac{p}{1-p} \quad odds\in[0, +\infty)</script></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/02/29/RNN%E3%80%81LSTM%E3%80%81GRU%E5%AF%B9%E6%AF%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="2hip3ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2hip3ng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/29/RNN%E3%80%81LSTM%E3%80%81GRU%E5%AF%B9%E6%AF%94/" itemprop="url">RNN、LSTM、GRU对比</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-29T20:02:24+08:00">
-                2020-02-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-04-04T21:02:44+08:00" content="2020-04-04">
-                2020-04-04
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">自然语言处理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h2><h3 id="RNN框架图"><a href="#RNN框架图" class="headerlink" title="RNN框架图"></a>RNN框架图</h3><h3 id="梯度消失及爆炸"><a href="#梯度消失及爆炸" class="headerlink" title="梯度消失及爆炸"></a>梯度消失及爆炸</h3><p>Todo</p>
-<h2 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h2><p>从RNN网络出发开始介绍LSTM网络，记录其架构图及公式。</p>
-<h3 id="LSTM的框架图"><a href="#LSTM的框架图" class="headerlink" title="LSTM的框架图"></a>LSTM的框架图</h3><p><img src="/images/LSTM.png" alt="LSTM"></p>
-<h3 id="遗忘门"><a href="#遗忘门" class="headerlink" title="遗忘门"></a>遗忘门</h3><script type="math/tex; mode=display">f_t=\sigma(W_f\cdot[h_{t-1},x_t]+b_f)</script><h3 id="输入门"><a href="#输入门" class="headerlink" title="输入门"></a>输入门</h3><script type="math/tex; mode=display">i_t=\sigma(W_i\cdot[h_{t-1},x_t]+b_i)</script><script type="math/tex; mode=display">\tilde{C_t}=tanh(W_c\cdot[h_{t-1},x_t]+b_c)</script><script type="math/tex; mode=display">C_t=f_t * C_{t-1} + i_t * \tilde{C_t}</script><h3 id="输出门"><a href="#输出门" class="headerlink" title="输出门"></a>输出门</h3><script type="math/tex; mode=display">o_t=\sigma(W_o\cdot[h_{t-1},x_t]+b_o)</script><script type="math/tex; mode=display">h_t=o_t * tanh(C_t)</script><h3 id="梯度问题"><a href="#梯度问题" class="headerlink" title="梯度问题"></a>梯度问题</h3><ul>
-<li>首先需要明确的是，RNN 中的梯度消失/梯度爆炸和普通的 MLP 或者深层 CNN 中梯度消失/梯度爆炸的含义不一样。MLP/CNN 中不同的层有不同的参数，各是各的梯度；而 RNN 中同样的权重在各个时间步共享，最终的梯度 g = 各个时间步的梯度 g_t 的和。</li>
-<li>RNN 中总的梯度是不会消失的。即便梯度越传越弱，那也只是远距离的梯度消失，由于近距离的梯度不会消失，所有梯度之和便不会消失。RNN 所谓梯度消失的真正含义是，梯度被近距离梯度主导，导致模型难以学到远距离的依赖关系。</li>
-<li>LSTM 中梯度的传播有很多条路径，cell 这条路径上只有逐元素相乘和相加的操作，梯度流最稳定；但是其他路径上梯度流与普通 RNN 类似，照样会发生相同的权重矩阵反复连乘。</li>
-<li>但是在其他路径上，LSTM 的梯度流和普通 RNN 没有太大区别，依然会爆炸或者消失。由于总的远距离梯度 = 各条路径的远距离梯度之和，即便其他远距离路径梯度消失了，只要保证有一条远距离路径（就是上面说的那条高速公路）梯度不消失，总的远距离梯度就不会消失（正常梯度 + 消失梯度 = 正常梯度）。因此 LSTM 通过改善一条路径上的梯度问题拯救了总体的远距离梯度。</li>
-<li>同样，因为总的远距离梯度 = 各条路径的远距离梯度之和，高速公路上梯度流比较稳定，但其他路径上梯度有可能爆炸，此时总的远距离梯度 = 正常梯度 + 爆炸梯度 = 爆炸梯度，因此 LSTM 仍然有可能发生梯度爆炸。不过，由于 LSTM 的其他路径非常崎岖，和普通 RNN 相比多经过了很多次激活函数（导数都小于 1），因此 LSTM 发生梯度爆炸的频率要低得多。实践中梯度爆炸一般通过梯度裁剪来解决。</li>
-</ul>
-<h2 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h2><h3 id="GRU框架图"><a href="#GRU框架图" class="headerlink" title="GRU框架图"></a>GRU框架图</h3><p><img src="/images/LSTM.png" alt="GRU"></p>
-<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><script type="math/tex; mode=display">z_t = \sigma (W_z \cdot [h_{t-1}, x_t] + b_z)</script><script type="math/tex; mode=display">r_t = \sigma (W_r \cdot [h_{t-1}, x_t] + b_r)</script><script type="math/tex; mode=display">\tilde{h_t} = W \cdot [r_t * h_{t-1}, x_t] + b</script><script type="math/tex; mode=display">h_t = (1-z_t) * h_{t-1}  + z_t * \tilde{h_t}</script><h3 id="与LSTM区别"><a href="#与LSTM区别" class="headerlink" title="与LSTM区别"></a>与LSTM区别</h3><ul>
-<li>GRU和LSTM的性能在很多任务上不分伯仲。</li>
-<li>GRU 参数更少因此更容易收敛，但是数据集很大的情况下，LSTM表达性能更好。</li>
-<li>从结构上来说，GRU只有两个门（update和reset），LSTM有三个门（forget，input，output），GRU直接将 hidden state 传给下一个单元，而LSTM则用 memory cell 把 hidden state 包装起来。</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener">Understanding LSTM Networks</a></li>
-<li><a href="https://www.zhihu.com/question/34878706/answer/665429718" target="_blank" rel="noopener">LSTM如何来避免梯度弥散和梯度爆炸？</a></li>
-<li><a href="https://blog.csdn.net/u012223913/article/details/77724621" target="_blank" rel="noopener">LSTM 和GRU的区别</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="accessibility.prev_page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="accessibility.prev_page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
   </nav>
 
 
@@ -2127,7 +2129,7 @@ $$odds=\frac{p}{1-p} \quad odds\in[0, +\infty)</script></li>
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2149,7 +2151,7 @@ $$odds=\frac{p}{1-p} \quad odds\in[0, +\infty)</script></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
