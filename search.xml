@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>树算法</title>
+    <url>/2020/08/08/%E6%A0%91%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="1-决策树"><a href="#1-决策树" class="headerlink" title="1. 决策树"></a>1. 决策树</h1><ul>
+<li><p>信息熵</p>
+</li>
+<li><p>信息增益</p>
+</li>
+<li><p>信息增益率</p>
+</li>
+<li><p>基尼指数</p>
+</li>
+<li><p>剪枝</p>
+</li>
+<li><p>连续值处理</p>
+</li>
+<li><p>缺失值处理 </p>
+</li>
+</ul>
+<h1 id="2-随机森林"><a href="#2-随机森林" class="headerlink" title="2. 随机森林"></a>2. 随机森林</h1><ul>
+<li><p>自助采样</p>
+</li>
+<li><p>简单投票</p>
+</li>
+<li><p>包外估计</p>
+</li>
+<li><p>随机属性</p>
+</li>
+</ul>
+<h1 id="3-提升树"><a href="#3-提升树" class="headerlink" title="3. 提升树"></a>3. 提升树</h1><h1 id="4-梯度提升树"><a href="#4-梯度提升树" class="headerlink" title="4. 梯度提升树"></a>4. 梯度提升树</h1><h1 id="5-GBDT"><a href="#5-GBDT" class="headerlink" title="5. GBDT"></a>5. GBDT</h1><h1 id="6-XGBboost"><a href="#6-XGBboost" class="headerlink" title="6. XGBboost"></a>6. XGBboost</h1><h1 id="7-GBDT、XGBoost对比"><a href="#7-GBDT、XGBoost对比" class="headerlink" title="7. GBDT、XGBoost对比"></a>7. GBDT、XGBoost对比</h1><ul>
+<li><p>XGBoost 是 GBDT的工程实现</p>
+</li>
+<li><p>XGBoost 加入正则项控制模型复杂度</p>
+</li>
+<li><p>XGBoost 使用泰勒二阶展开，梯度下降更快更准</p>
+</li>
+<li><p>XGBoost 支持多种基分类器</p>
+</li>
+<li><p>XGBoost 采用随机森林相似策略，对训练数据进行列抽样</p>
+</li>
+<li><p>XGBoost 自动学习缺失值的处理</p>
+</li>
+<li><p>XGBoost 缩减 Shringe，类似学习率，削弱每棵树的影响</p>
+</li>
+<li><p>XGBoost 特征粒度的并行化，特征预排序，保存为block，寻找最佳分割点</p>
+</li>
+</ul>
+<h1 id="8-LGB特点"><a href="#8-LGB特点" class="headerlink" title="8. LGB特点"></a>8. LGB特点</h1><ul>
+<li>直方图寻找特征分裂点</li>
+<li>leaf-wise 对比 XGBoost level-wise 容易长出较深的决策树，加入最大深度限制</li>
+</ul>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>决策树</tag>
+        <tag>Boosting</tag>
+        <tag>Bagging</tag>
+        <tag>GBDT</tag>
+        <tag>xgboost</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>拓扑排序</title>
+    <url>/2020/08/07/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h1 id="1-概念及原理"><a href="#1-概念及原理" class="headerlink" title="1. 概念及原理"></a>1. 概念及原理</h1><p>从入度为0的节点入手，使用队列存入度为0的节点，并广度遍历下去</p>
+<h1 id="2-应用"><a href="#2-应用" class="headerlink" title="2. 应用"></a>2. 应用</h1><h1 id="3-实现"><a href="#3-实现" class="headerlink" title="3. 实现"></a>3. 实现</h1>]]></content>
+      <categories>
+        <category>手撕代码</category>
+      </categories>
+      <tags>
+        <tag>拓扑排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>矩阵中的路径</title>
     <url>/2020/08/07/%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<h1 id="1-矩阵中的路径"><a href="#1-矩阵中的路径" class="headerlink" title="1. 矩阵中的路径"></a>1. 矩阵中的路径</h1><p>请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如，在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字母用加粗标出）。</p>
