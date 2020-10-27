@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>凸优化</title>
+    <url>/2020/10/27/%E5%87%B8%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p>本笔记为凸优化学习笔记，学习书籍为《凸优化》Stephen Boyd 中文版</p>
+<h2 id="0-引言"><a href="#0-引言" class="headerlink" title="0. 引言"></a>0. 引言</h2><p>数学优化问题定义</p>
+<script type="math/tex; mode=display">
+优化问题:
+\begin{cases}
+min  \ \ \ f_0(x) \\
+s.t. \ \ \ f_i(x) \le b_i, \ \ \  i=1,...,m
+\end{cases}</script><p>线性函数</p>
+<p>凸函数</p>
+]]></content>
+      <categories>
+        <category>凸优化</category>
+      </categories>
+      <tags>
+        <tag>凸优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2020/08/13/test/</url>
+    <content><![CDATA[<p><img src="/2020/08/13/test/BN.png" alt="test"><br><img src="./../images/BN.png" alt="test"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>猿辅导一面</title>
+    <url>/2020/08/08/%E7%8C%BF%E8%BE%85%E5%AF%BC%E4%B8%80%E9%9D%A2/</url>
+    <content><![CDATA[<h1 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1. 自我介绍"></a>1. 自我介绍</h1><p>我是<em>*</em></p>
+<h1 id="2-项目经历"><a href="#2-项目经历" class="headerlink" title="2. 项目经历"></a>2. 项目经历</h1><p>我做了<em>*</em></p>
+<h1 id="3-手撕代码"><a href="#3-手撕代码" class="headerlink" title="3. 手撕代码"></a>3. 手撕代码</h1><ul>
+<li><p>0-100的N个数(数的值范围为0~100 1 &lt; N &lt;= 1000),分成两组A、B:怎样分|meanA-meanB|最大? </p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Solution:</span><br><span class="line"><span class="bullet">1. </span>排序</span><br><span class="line"><span class="bullet">2. </span>meanB = nums[0]</span><br><span class="line"><span class="bullet">3. </span>meanA = nums[1:] / (n-1)</span><br><span class="line"><span class="bullet">4. </span>res = meanA - meanB</span><br><span class="line"></span><br><span class="line">面试官提示：</span><br><span class="line"><span class="bullet">1. </span>排序</span><br><span class="line"><span class="bullet">2. </span>排序优化</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>最长不超过k个字符的子序列</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Leetcode 原题</span><br><span class="line">滑动窗口</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+  </entry>
+  <entry>
     <title>树算法</title>
     <url>/2020/08/08/%E6%A0%91%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h1 id="1-决策树"><a href="#1-决策树" class="headerlink" title="1. 决策树"></a>1. 决策树</h1><ul>
@@ -208,7 +254,7 @@
 <p>画图求概率</p>
 <p>$x+y&gt;1-x-y$     =&gt;   $2x+2y &gt; 1$</p>
 <p>$x+1-x-y&gt;y$     =&gt;    $y &lt; 1/2$</p>
-<p>$x-y<1-x-y$     =>    $x &lt; 1/2$</p>
+<p>$x-y<1-x-y$ =>    $x &lt; 1/2$</1-x-y$></p>
 ]]></content>
       <categories>
         <category>数学</category>
@@ -302,7 +348,7 @@
 <li>对于给定的训练数据集，基于特征条件独立假设学习输入输出的联合概率分布；</li>
 <li>基于联合概率分布，对给定的输入 $x$ ， 利用贝叶斯定理求出后验概率最大输出 $ y $ 。</li>
 </ul>
-<p> <br/></p>
+<p> <br></p>
 <ul>
 <li>条件概率公式  <script type="math/tex; mode=display">P(A|B) =  \frac{P(A, B)}{P(B)}</script><script type="math/tex; mode=display">P(B|A) =  \frac{P(A, B)}{P(A)}</script></li>
 <li>贝叶斯定理   <script type="math/tex; mode=display">P(A|B) =  P(B|A)  * \frac{P(A)}{P(B)}</script></li>
@@ -684,6 +730,7 @@ P(X=x|Y=c_k)  &= P(X^{(1)}=x^{(1)}, ..., X^{(n)}=x^{(n)} | Y=c_k) \\
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://www.jianshu.com/p/5b8f00d6a9d7" target="_blank" rel="noopener">topK算法问题</a></li>
 <li><a href="https://blog.csdn.net/zyq522376829/article/details/47686867?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&amp;utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1" target="_blank" rel="noopener">海量数据处理 - 10亿个数中找出最大的10000个数（top K问题）</a></li>
+<li><a href="https://blog.csdn.net/aiya_aiya_/article/details/79846380#1.%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">十大排序python实现</a></li>
 </ol>
 ]]></content>
       <categories>
@@ -782,7 +829,7 @@ P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2
 </li>
 </ul>
 <h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><ul>
-<li>算法流程图<br><img src="images\BN.png" alt="BN"><br><br>($\epsilon$是为了增加训练稳定性而加入的小的常量数据)</li>
+<li>算法流程图<br><img src="./../images/BN.png" alt="BN"><br><br>($\epsilon$是为了增加训练稳定性而加入的小的常量数据)</li>
 <li><p>测试阶段如何使用Batch Normalization？</p>
 <ul>
 <li>BN在每一层计算的$\mu$与$\sigma^2$都是基于当前batch中的训练数据，但是这就带来了一个问题：在预测阶段，有可能只需要预测一个样本或很少的样本，没有像训练样本中那么多的数据，此时$\mu$与$\sigma^2$的计算一定是有偏估计，这个时候该如何进行计算？</li>

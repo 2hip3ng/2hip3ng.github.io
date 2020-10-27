@@ -296,6 +296,533 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/07/08/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B%EF%BC%88Hidden-Markov-Model-HMM%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/08/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B%EF%BC%88Hidden-Markov-Model-HMM%EF%BC%89/" itemprop="url">隐马尔可夫模型（Hidden Markov Model, HMM）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-08T20:49:12+08:00">
+                2020-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-07-19T21:05:02+08:00" content="2020-07-19">
+                2020-07-19
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-隐马尔可夫模型的基本概念"><a href="#1-隐马尔可夫模型的基本概念" class="headerlink" title="1. 隐马尔可夫模型的基本概念"></a>1. 隐马尔可夫模型的基本概念</h1><h2 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h2><p>隐马尔可夫模型是关于时序的概率模型，描述由一个隐藏的马尔可夫链随机生成不可观测的状态随机序列，再由各个状态生成一个观测从而产生观测随机序列的过程。   </p>
+<ul>
+<li>马尔可夫链：隐藏的马尔可夫链随机生成的状态的序列</li>
+<li>每个状态生成一个观测，而由此产生的观测的随机序列，称为观测序列</li>
+</ul>
+<h2 id="1-2-三要素"><a href="#1-2-三要素" class="headerlink" title="1.2 三要素"></a>1.2 三要素</h2><p>隐马尔可夫模型由初始状态概率向量  $\pi$ 、状态转移概率矩阵 $A$ 和 观测概率矩阵 $B$ 决定。 $ \pi $ 和 $A$ 决定状态序列，$B$ 决定观测序列。</p>
+<script type="math/tex; mode=display">\lambda = (A, B, \pi)</script><h2 id="1-3-两个基本假设"><a href="#1-3-两个基本假设" class="headerlink" title="1.3 两个基本假设"></a>1.3 两个基本假设</h2><ul>
+<li>齐次马尔可夫性假设：假设隐藏的马尔可夫链在任意时刻 $t$ 的状态只依赖于其前一时刻的状态，与其他时刻的状态集观测无关，也与时刻 $t$ 无关</li>
+<li>观测独立性假设：假设任意时刻的观测只依赖于该时刻的马尔可夫链的状态，与其他观测及状态无关</li>
+</ul>
+<h2 id="1-4-隐马尔可夫模型的3个基本问题"><a href="#1-4-隐马尔可夫模型的3个基本问题" class="headerlink" title="1.4 隐马尔可夫模型的3个基本问题"></a>1.4 隐马尔可夫模型的3个基本问题</h2><ul>
+<li>概率计算问题。 给定模型 $\lambda=(A,B,\pi)$ 和观测序列$O=(o_1, o_2, … , o_T)$ ，计算在模型 $\lambda$ 下观测序列 $O$ 出现的概率  $P(O|\lambda)$</li>
+<li>学习问题。已知观测序列 $O=(o_1, o_2, … , o_T)$ ，估计模型 $ \lambda = (A, B, \pi)$ 参数，使得在该模型下观测序列概率 $P(O|\lambda)$ 最大。即用最大似然估计的方法估计参数。</li>
+<li>预测问题，也称为解码问题。已知模型 $\lambda=(A,B,\pi) $ 和观测序列$O=(o_1, o_2, … , o_T)$ ，求对给定观测序列条件概率 $P(I|O)$ 最大的状态序列 $I=(i_1, i_2, …, i_T)$ 。即给定观测序列，求最有可能的对应的状态序列。</li>
+</ul>
+<h1 id="2-概率计算算法"><a href="#2-概率计算算法" class="headerlink" title="2. 概率计算算法"></a>2. 概率计算算法</h1><h2 id="2-1-直接计算法"><a href="#2-1-直接计算法" class="headerlink" title="2.1 直接计算法"></a>2.1 直接计算法</h2><p>给定模型 $\lambda=(A,B,\pi)$ 和观测序列 $O=(o_1, o_2, … , o_T)$ ，计算在模型 $\lambda$ 下观测序列 $O$ 出现的概率  $P(O|\lambda)$</p>
+<p>通过列举所以可能的长度为 $T$ 的状态序列 $I=(i_1, i_2, …, i_T)$， 求各个状态序列 $I$ 与观测序列 $O=(o_1, o_2, … , o_T)$ 的联合概率 $ P(O, I | \lambda)$，然后对所有可能的状态序列求和，得到  $P(O|\lambda)$</p>
+<ul>
+<li>时间复杂度 $O(TN^T)$</li>
+</ul>
+<h2 id="2-2-前向算法"><a href="#2-2-前向算法" class="headerlink" title="2.2 前向算法"></a>2.2 前向算法</h2><ul>
+<li><p>前向概率：给定隐马尔可夫模型 $\lambda $，定义到时刻 $t$ 部分观测序列为 $o_1, o_2, … , o_t $ 且状态为 $q_i$ 的概率为前向概率，记作</p>
+<script type="math/tex; mode=display">\alpha_t(i) = P( o_1, o_2, ... , o_t , i_t = q_i | \lambda)</script></li>
+<li><p>结合动态规划递推求解 $ \alpha_t(i) $ 即观测序列概率 $P(O|\lambda)$</p>
+</li>
+<li>时间复杂度 $O(TN^2)$</li>
+</ul>
+<h2 id="2-3-后向算法"><a href="#2-3-后向算法" class="headerlink" title="2.3 后向算法"></a>2.3 后向算法</h2><ul>
+<li><p>后向概率：给定隐马尔可夫模型 $\lambda $，定义在时刻 $t$ 状态为  $q<em>i$ 的条件下，从 $t+1$ 到 $T$ 的部分观测序列为 $o</em>{t+1}, o_{t+2}, … , o_T $ 的概率为后向概率，记作</p>
+<script type="math/tex; mode=display">\beta_t(i) = P( o_{t+1}, o_{t+2}, ... , o_T, i_t = q_i | \lambda)</script></li>
+<li><p>结合动态规划递推求解 $ \beta_t(i) $ 即观测序列概率 $P(O|\lambda)$</p>
+</li>
+<li>时间复杂度 $O(TN^2)$</li>
+</ul>
+<h1 id="3-学习算法"><a href="#3-学习算法" class="headerlink" title="3. 学习算法"></a>3. 学习算法</h1><h2 id="3-1-监督学习方法"><a href="#3-1-监督学习方法" class="headerlink" title="3.1 监督学习方法"></a>3.1 监督学习方法</h2><p>状态数据和观测序列都存在的训练数据，利用极大似然估计发来估计隐马尔可夫模型的参数</p>
+<ul>
+<li>转移概率</li>
+<li>观测概率</li>
+<li>初始状态概率</li>
+</ul>
+<h2 id="3-2-Baum-Welch算法"><a href="#3-2-Baum-Welch算法" class="headerlink" title="3.2 Baum-Welch算法"></a>3.2 Baum-Welch算法</h2><p>Todo</p>
+<h1 id="4-预测算法"><a href="#4-预测算法" class="headerlink" title="4. 预测算法"></a>4. 预测算法</h1><h2 id="4-1-近似算法"><a href="#4-1-近似算法" class="headerlink" title="4.1 近似算法"></a>4.1 近似算法</h2><p>贪心思想，在每个时刻 $t$ 选择该时刻最有可能出现的状态，优点是计算简单，缺点是不能保证预测的状态序列整体是最优可能的状态序列。</p>
+<h2 id="4-2-维特比算法"><a href="#4-2-维特比算法" class="headerlink" title="4.2 维特比算法"></a>4.2 维特比算法</h2><p>用动态规划求概率最大路径（最优路径），这时一条路径对应着一个状态序列。</p>
+<p>下一步规划：补充EM算法，CRF </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/06/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/16/%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="url">并查集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-16T22:58:19+08:00">
+                2020-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-08-05T14:51:37+08:00" content="2020-08-05">
+                2020-08-05
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-并查集概念"><a href="#1-并查集概念" class="headerlink" title="1.并查集概念"></a>1.并查集概念</h1><p>并查集，在一些有N个元素的集合应用问题中，我们通常是在开始时让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。</p>
+<h1 id="2-实现方法"><a href="#2-实现方法" class="headerlink" title="2. 实现方法"></a>2. 实现方法</h1><h2 id="2-1-API"><a href="#2-1-API" class="headerlink" title="2.1 API"></a>2.1 API</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.parents = []</span><br><span class="line">        self.ranks = []</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_connected</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-2-具体实现"><a href="#2-2-具体实现" class="headerlink" title="2.2 具体实现"></a>2.2 具体实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.parents = []</span><br><span class="line">        self.ranks = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="comment"># 尾递归</span></span><br><span class="line">        <span class="keyword">if</span> x != self.parents[x]:</span><br><span class="line">            self.parents[x] = self.find(self.parents[x])</span><br><span class="line">        <span class="keyword">return</span> self.parents[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_connected</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.find(x) == self.find(y)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        parent_x = self.find(x)</span><br><span class="line">        parent_y = self.find(y)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 加入ranks 防止树过高</span></span><br><span class="line">        rank_x = self.ranks[parent_x]</span><br><span class="line">        rank_y = self.ranks[parent_y]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> rank_x == rank_y:</span><br><span class="line">            self.parents[parent_y] = parent_x</span><br><span class="line">            self.ranks[parent_x] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> rank_x &gt; rank_y:</span><br><span class="line">            self.parents[parent_y] = parent_x</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.parents[parent_x] = parent_y</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-Todo"><a href="#2-3-Todo" class="headerlink" title="2.3 Todo"></a>2.3 Todo</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/04/02/%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="2hip3ng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2hip3ng">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/02/%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" itemprop="url">预训练语言模型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-02T16:03:38+08:00">
+                2020-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-updated">
+              &nbsp; | &nbsp; 更新于
+              <time itemprop="dateUpdated" datetime="2020-08-05T15:00:26+08:00" content="2020-08-05">
+                2020-08-05
+              </time>
+            </span>
+          
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0. 引言"></a>0. 引言</h1><p>Todo</p>
+<h1 id="1-word2vec"><a href="#1-word2vec" class="headerlink" title="1. word2vec"></a>1. word2vec</h1><p>Todo</p>
+<h1 id="2-glove"><a href="#2-glove" class="headerlink" title="2. glove"></a>2. glove</h1><p>Todo</p>
+<h1 id="3-elmo"><a href="#3-elmo" class="headerlink" title="3. elmo"></a>3. elmo</h1><p>Todo</p>
+<h1 id="4-gpt"><a href="#4-gpt" class="headerlink" title="4. gpt"></a>4. gpt</h1><p>Todo</p>
+<h1 id="5-gpt2"><a href="#5-gpt2" class="headerlink" title="5. gpt2"></a>5. gpt2</h1><p>Todo</p>
+<h1 id="6-bert"><a href="#6-bert" class="headerlink" title="6. bert"></a>6. bert</h1><p>Todo</p>
+<h1 id="7-roberta"><a href="#7-roberta" class="headerlink" title="7. roberta"></a>7. roberta</h1><h2 id="7-1-静态Masking-vs-动态Masking"><a href="#7-1-静态Masking-vs-动态Masking" class="headerlink" title="7.1 静态Masking vs 动态Masking"></a>7.1 静态Masking vs 动态Masking</h2><ul>
+<li>静态Masking：Bert对每一个序列随机选择15%的Tokens替换成[MASK]，为了消除与下游任务的不匹配，还对这15%的Tokens进行（1）80%的时间替换成[MASK]；（2）10%的时间不变；（3）10%的时间替换成其他词。但整个训练过程，这15%的Tokens一旦被选择就不再改变，也就是说从一开始随机选择了这15%的Tokens，之后的N个epoch里都不再改变了。</li>
+<li>动态Masking：RoBERTa一开始把预训练的数据复制10份，每一份都随机选择15%的Tokens进行Masking，也就是说，同样的一句话有10种不同的mask方式。然后每份数据都训练N/10个epoch。这就相当于在这N个epoch的训练中，每个序列的被mask的tokens是会变化的。</li>
+</ul>
+<h2 id="7-2-with-NSP-vs-without-NSP"><a href="#7-2-with-NSP-vs-without-NSP" class="headerlink" title="7.2  with NSP vs without NSP"></a>7.2  with NSP vs without NSP</h2><p>原本的Bert为了捕捉句子之间的关系，使用了NSP任务进行预训练，就是输入一对句子A和B，判断这两个句子是否是连续的。在训练的数据中，50%的B是A的下一个句子，50%的B是随机抽取的。而RoBERTa去除了NSP，而是每次输入连续的多个句子，直到最大长度512（可以跨文章）。</p>
+<h3 id="7-3-更大的mini-batch"><a href="#7-3-更大的mini-batch" class="headerlink" title="7.3  更大的mini-batch"></a>7.3  更大的mini-batch</h3><p>原本的BERTbase 的batch size是256，训练1M个steps。RoBERTa的batch size为8k。</p>
+<h3 id="7-4-更多的数据，更长时间的训练"><a href="#7-4-更多的数据，更长时间的训练" class="headerlink" title="7.4  更多的数据，更长时间的训练"></a>7.4  更多的数据，更长时间的训练</h3><p>RoBERTa用了更多的数据。性能确实再次彪升。当然，也需要配合更长时间的训练。</p>
+<h1 id="8-Albert"><a href="#8-Albert" class="headerlink" title="8. Albert"></a>8. Albert</h1><h3 id="8-1-对Embedding因式分解"><a href="#8-1-对Embedding因式分解" class="headerlink" title="8.1 对Embedding因式分解"></a>8.1 对Embedding因式分解</h3><p>ALBERT采用了一种因式分解的方法来降低参数量。首先把one-hot向量映射到一个低维度的空间，大小为E，然后再映射到一个高维度的空间，说白了就是先经过一个维度很低的 embedding matrix，然后再经过一个高维度matrix把维度变到隐藏层的空间内，从而把参数量从$O(V×H)O(V×H)O(V×H)$降低到了$O(V×E+E×H)O(V×E+E×H)O(V×E+E×H) $，当 $E&lt;&lt;H$时参数量减少的很明显。</p>
+<h3 id="8-2-跨层的参数共享（Cross-layer-parameter-sharing）"><a href="#8-2-跨层的参数共享（Cross-layer-parameter-sharing）" class="headerlink" title="8.2 跨层的参数共享（Cross-layer parameter sharing）"></a>8.2 跨层的参数共享（Cross-layer parameter sharing）</h3><p>全连接层与attention层都进行参数共享，也就是说共享encoder内的所有参数，同样量级下的Transformer采用该方案后实际上效果是有下降的，但是参数量减少了很多，训练速度也提升了很多。</p>
+<h3 id="8-3-句间连贯（Inter-sentence-coherence-loss）"><a href="#8-3-句间连贯（Inter-sentence-coherence-loss）" class="headerlink" title="8.3 句间连贯（Inter-sentence coherence loss）"></a>8.3 句间连贯（Inter-sentence coherence loss）</h3><p>在ALBERT中，为了只保留一致性任务去除主题识别的影响，提出了一个新的任务 sentence-order prediction（SOP），SOP的正样本和NSP的获取方式是一样的，负样本把正样本的顺序反转即可。SOP因为实在同一个文档中选的，其只关注句子的顺序并没有主题方面的影响。并且SOP能解决NSP的任务，但是NSP并不能解决SOP的任务，该任务的添加给最终的结果提升了一个点。</p>
+<h3 id="8-4-移除dropout"><a href="#8-4-移除dropout" class="headerlink" title="8.4 移除dropout"></a>8.4 移除dropout</h3><p>ALBERT在训练了100w步之后，模型依旧没有过拟合，于是乎作者果断移除了dropout，没想到对下游任务的效果竟然有一定的提升。这也是业界第一次发现dropout对大规模的预训练模型会造成负面影响。</p>
+<h1 id="9-DistillBert"><a href="#9-DistillBert" class="headerlink" title="9. DistillBert"></a>9. DistillBert</h1><p>Todo</p>
+<h1 id="10-xlnet"><a href="#10-xlnet" class="headerlink" title="10. xlnet"></a>10. xlnet</h1><ul>
+<li><p>自回归 vs 自编码，通过全排列及mask实现</p>
+</li>
+<li><p>Bert输入存在mask噪声，输出条件独立，缺乏生成能力</p>
+</li>
+<li>双流Attention，自己预测自己，自己又不能看见自己</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.jianshu.com/p/eddf04ba8545" target="_blank" rel="noopener">改进版的RoBERTa到底改进了什么？</a></li>
+<li><a href="https://blog.csdn.net/u012526436/article/details/101924049" target="_blank" rel="noopener">一文揭开ALBERT的神秘面纱</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/03/31/focal-loss/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -468,8 +995,8 @@
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-04-04T00:16:08+08:00" content="2020-04-04">
-                2020-04-04
+              <time itemprop="dateUpdated" datetime="2020-08-13T16:02:10+08:00" content="2020-08-13">
+                2020-08-13
               </time>
             </span>
           
@@ -600,6 +1127,7 @@
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://www.jianshu.com/p/5b8f00d6a9d7" target="_blank" rel="noopener">topK算法问题</a></li>
 <li><a href="https://blog.csdn.net/zyq522376829/article/details/47686867?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&amp;utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1" target="_blank" rel="noopener">海量数据处理 - 10亿个数中找出最大的10000个数（top K问题）</a></li>
+<li><a href="https://blog.csdn.net/aiya_aiya_/article/details/79846380#1.%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F" target="_blank" rel="noopener">十大排序python实现</a></li>
 </ol>
 
           
@@ -1183,8 +1711,8 @@ P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2
           
             <span class="post-updated">
               &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-03-07T15:27:53+08:00" content="2020-03-07">
-                2020-03-07
+              <time itemprop="dateUpdated" datetime="2020-08-13T15:11:07+08:00" content="2020-08-13">
+                2020-08-13
               </time>
             </span>
           
@@ -1251,7 +1779,7 @@ P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2
 </li>
 </ul>
 <h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><ul>
-<li>算法流程图<br><img src="images\BN.png" alt="BN"><br><br>($\epsilon$是为了增加训练稳定性而加入的小的常量数据)</li>
+<li>算法流程图<br><img src="./../images/BN.png" alt="BN"><br><br>($\epsilon$是为了增加训练稳定性而加入的小的常量数据)</li>
 <li><p>测试阶段如何使用Batch Normalization？</p>
 <ul>
 <li>BN在每一层计算的$\mu$与$\sigma^2$都是基于当前batch中的训练数据，但是这就带来了一个问题：在预测阶段，有可能只需要预测一个样本或很少的样本，没有像训练样本中那么多的数据，此时$\mu$与$\sigma^2$的计算一定是有偏估计，这个时候该如何进行计算？</li>
@@ -1462,549 +1990,6 @@ P_m &= \frac{k}{m}  (\frac{m+1-k}{m+1} +\frac{k}{m+1} \frac{k-1}{k})  (\frac{m+2
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/03/04/TextCNN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="2hip3ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2hip3ng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/04/TextCNN/" itemprop="url">TextCNN&TextGCN</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-04T15:41:06+08:00">
-                2020-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-03-04T19:17:58+08:00" content="2020-03-04">
-                2020-03-04
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">自然语言处理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="TextCNN原理"><a href="#TextCNN原理" class="headerlink" title="TextCNN原理"></a>TextCNN原理</h2><ul>
-<li>框架图 <img src="images/TextCNN.png" alt="TextCNN"></li>
-<li>$x_i: $ the k-dimensional word vector corresponding to the i-th word in the sentence.</li>
-<li>向量拼接 <script type="math/tex; mode=display">x_{1:n} = concat(x_i, x_2, ...,x_n)</script></li>
-<li>卷积操作 <script type="math/tex; mode=display">c_i = f (w \cdot x_{i:i+h-1} + b)</script></li>
-<li>卷积结果 <script type="math/tex; mode=display">c = [c_1, c_2, c_3, ..., c_{n-h+1}]</script></li>
-<li>max-over-time pooling <script type="math/tex; mode=display">\hat c = max(x)</script></li>
-<li>这是一个卷积核的结果，实际网络中有256个卷积核和两个通道(static embedding 和 dynamic embedding)</li>
-</ul>
-<h2 id="TextGCN原理"><a href="#TextGCN原理" class="headerlink" title="TextGCN原理"></a>TextGCN原理</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/03/04/TF-IDF%E5%8F%8ATextRank/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="2hip3ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2hip3ng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/04/TF-IDF%E5%8F%8ATextRank/" itemprop="url">TF-IDF及TextRank</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-04T11:00:55+08:00">
-                2020-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-03-04T14:14:04+08:00" content="2020-03-04">
-                2020-03-04
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">自然语言处理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-TF-IDF"><a href="#1-TF-IDF" class="headerlink" title="1. TF-IDF"></a>1. TF-IDF</h2><ul>
-<li>TF<ul>
-<li>TF是词频(TF，Term Frequency): 词频（TF）表示词条（关键字）在文本中出现的频率。<script type="math/tex; mode=display">词频(TF) = \frac{某个词在文章中出现的次数}{文章的总词数}</script></li>
-</ul>
-</li>
-<li>IDF<ul>
-<li>IDF是逆向文件频率 (IDF，Inverse Document Frequency): 某一特定词语的IDF，可以由总文件数目除以包含该词语的文件的数目，再将得到的商取对数得到。如果包含词条t的文档越少, IDF越大，则说明词条具有很好的类别区分能力。<script type="math/tex; mode=display">逆文档频率(IDF) = log \frac{语料库的总文档数}{包含该词的文档数+1}</script></li>
-</ul>
-</li>
-<li>TF-IDF<ul>
-<li>TF-IDF实际上是 $TF * IDF$ 。某一特定文件内的高词语频率，以及该词语在整个文件集合中的低文件频率，可以产生出高权重的TF-IDF。因此，TF-IDF倾向于过滤掉常见的词语，保留重要的词语。<script type="math/tex; mode=display">TFIDF = TF \cdot IDF</script></li>
-</ul>
-</li>
-</ul>
-<h2 id="2-TextRank"><a href="#2-TextRank" class="headerlink" title="2. TextRank"></a>2. TextRank</h2><ul>
-<li>基于词语词之间的共现性构建无向图。<br><br>参考<a href="https://my.oschina.net/u/3800567/blog/2870640" target="_blank" rel="noopener">jieba源码分析之关键字提取(TF-IDF/TextRank)</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://2hip3ng.github.io/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="2hip3ng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2hip3ng">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/03/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/" itemprop="url">激活函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-03T21:36:33+08:00">
-                2020-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-updated">
-              &nbsp; | &nbsp; 更新于
-              <time itemprop="dateUpdated" datetime="2020-07-02T20:33:05+08:00" content="2020-07-02">
-                2020-07-02
-              </time>
-            </span>
-          
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-激活函数的理解"><a href="#1-激活函数的理解" class="headerlink" title="1.激活函数的理解"></a>1.激活函数的理解</h2><p>解决线形模型 y = wx + b 的弊端，线形分类模型的分界地方都是平面或者超平面，无法解决具有非线形模型特征的数据。如果没有激励函数，在这种情况下你每一层节点的输入都是上层输出的线性函数，无论你神经网络有多少层，输出都是输入的线性组合，相当于没有隐藏层，网络的学习能力有限。<br><br><img src="images/非线型数据.png" alt="非线型数据"><br><br><a href="https://zhuanlan.zhihu.com/p/25279356" target="_blank" rel="noopener">形象的解释神经网络激活函数的作用是什么？</a><br><br><a href="https://blog.csdn.net/GreatXiang888/article/details/99296607" target="_blank" rel="noopener">常见激活函数，及其优缺点 - 面试篇</a></p>
-<h2 id="2-Sigmoid"><a href="#2-Sigmoid" class="headerlink" title="2. Sigmoid"></a>2. Sigmoid</h2><ul>
-<li>数学形式<script type="math/tex; mode=display">\sigma(x) = \frac{1}{1+ e^{-x}}</script><img src="images\sigmoid.png" alt="sigmoid"></li>
-<li>导数形式<script type="math/tex; mode=display">
-\begin{align}
-\sigma ^{'}(x)  &=  (1+e^{-x}) ^ {-2}  \cdot e^{-x} \\
-          &= \frac{e^{-x}}{(1+e^{-x})^2} \\
-          &= \frac{1+e^{-x} -1}{(1+e^{-x})^2} \\
-          &= \frac{1}{ 1+ e^{-x}} - \frac{1}{(1+e^{-x})^2} \\
-          &= \sigma(x) - \sigma ^ 2(x) \\
-          &= \sigma(x) (1-\sigma(x))
-\end{align}</script><img src="images\sigmoid导数.png" alt="sigmoid导数"></li>
-<li>特点 <ul>
-<li>Sigmoid 函数的取值范围在 (0,1) 之间，单调连续，求导容易，一般用于二分类神经网络的输出层。特别的，如果是非常大的负数，那么输出就是0；如果是非常大的正数，输出就是1。 </li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>如果我们初始化神经网络的权值为 $[0,1]$ 之间的随机值，由反向传播算法的数学推导可知，梯度从后向前传播时，每传递一层梯度值都会减小为原来的0.25倍，如果神经网络隐层特别多，那么梯度在穿过多层后将变得非常小接近于0，即出现梯度消失现象；当网络权值初始化为 $(1,+∞)$ 区间内的值，则会出现梯度爆炸情况。梯度消失更容易产生。</li>
-<li>其解析式中含有幂运算，计算机求解时相对来讲比较耗时。对于规模比较大的深度网络，这会较大地增加训练时间。</li>
-<li>Sigmoid 的 output 不是0均值（即zero-centered）。这是不可取的，这个特性会导致为在后面神经网络的高层处理中收到不是零中心的数据。这将导致梯度下降时的晃动，因为如果数据到了神经元永远时正数时，反向传播时权值w就会全为正数或者负数。</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-tanh"><a href="#3-tanh" class="headerlink" title="3. tanh"></a>3. tanh</h2><ul>
-<li>数学形式<script type="math/tex; mode=display">tanh(x) = \frac{e^{x} - e^{-x}} {e^{x} + e^{-x}}</script><img src="images\tanh.png" alt="tanh"></li>
-<li>导数形式<script type="math/tex; mode=display">
-\begin{align}
-\tanh ^{'}(x)  &=  1 - tanh^2(x)
-\end{align}</script><img src="images\tanh导数.png" alt="tanh导数"></li>
-<li>特点 <ul>
-<li>解决了Sigmoid函数的不是zero-centered输出问题，然而，梯度消失（gradient vanishing）的问题和幂运算的问题仍然存在。</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-Relu"><a href="#4-Relu" class="headerlink" title="4. Relu"></a>4. Relu</h2><ul>
-<li>数学形式<script type="math/tex; mode=display">Relu(x) = max(0, x)</script><img src="images\Relu.png" alt="Relu"></li>
-<li>导数形式<script type="math/tex; mode=display">
-\begin{equation}
-Relu(x) = \left \{
-\begin{aligned}
-1 &  & {x>0} \\
-0 &  & x<0 \\
-None & & x=0 
-\end{aligned}
-\right.
-\end{equation}</script></li>
-<li>优点<ul>
-<li>解决了梯度消失问题</li>
-<li>计算速度非常快，只需要判断输入是否大于0</li>
-<li>收敛速度远快于sigmoid</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>输出不是zero-centered</li>
-<li>原点不可导</li>
-<li>Dead ReLU Problem，指的是某些神经元可能永远不会被激活，导致相应的参数永远不能被更新。有两个主要原因可能导致这种情况产生: (1) 非常不幸的参数初始化，这种情况比较少见。例如w初始化全部为一些负数。 (2) learning rate太高导致在训练过程中参数更新太大，不幸使网络进入这种状态。解决方法是可以采用Xavier初始化方法，以及避免将learning rate设置太大或使用adagrad等自动调节learning rate的算法。</li>
-<li>leaky relu函数，$f(x)=max(αx,x)$ , 比如取α=0.01\alpha=0.01α=0.01，可以改善relu中x&lt;0部分的dead问题。</li>
-</ul>
-</li>
-</ul>
-<h2 id="5-如何选择合适的激活函数"><a href="#5-如何选择合适的激活函数" class="headerlink" title="5. 如何选择合适的激活函数"></a>5. 如何选择合适的激活函数</h2><ul>
-<li>首选 ReLU，速度快，但是要注意学习速率的调整，</li>
-<li>如果 ReLU 效果欠佳,尝试使用 Leaky ReLU 变种。</li>
-<li>可以尝试使用 tanh。</li>
-<li>Sigmoid 和 tanh 在 RNN（LSTM、注意力机制等）结构中有所应用，作为门控或者概率值。其它情况下，减少 Sigmoid 的使用。</li>
-<li>在浅层神经网络中，选择使用哪种激励函数影响不大。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2059,7 +2044,7 @@ None & & x=0
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2070,7 +2055,7 @@ None & & x=0
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2081,7 +2066,7 @@ None & & x=0
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
