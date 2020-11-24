@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>常用linux命令</title>
+    <url>/2020/11/11/%E5%B8%B8%E7%94%A8linux%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<ol>
+<li><p>统计文件夹下面文件个数  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls -l | grep &quot;^-&quot; | wc -l</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>vim下计算字符串出现次数  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:%s&#x2F;pattern&#x2F;&#x2F;gn</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Linux下载命令   </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget url</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Linux解压命令  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxvf  **.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>凸优化</title>
     <url>/2020/10/27/%E5%87%B8%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p>本笔记为凸优化学习笔记，学习书籍为《凸优化》Stephen Boyd 中文版</p>
+    <content><![CDATA[<p>本笔记为凸优化学习笔记，学习书籍为《凸优化》Stephen Boyd 中文版<br>B站视频参考：<a href="https://www.bilibili.com/video/BV1Jt411p7jE" target="_blank" rel="noopener">《中科大-凸优化-凌青》</a><br>中文版PDF：</p>
 <h2 id="0-引言"><a href="#0-引言" class="headerlink" title="0. 引言"></a>0. 引言</h2><p>数学优化问题定义</p>
 <script type="math/tex; mode=display">
 优化问题:
@@ -11,8 +31,12 @@
 min  \ \ \ f_0(x) \\
 s.t. \ \ \ f_i(x) \le b_i, \ \ \  i=1,...,m
 \end{cases}</script><p>线性函数</p>
-<p>凸函数</p>
-]]></content>
+<script type="math/tex; mode=display">
+f(\alpha x + \beta y) = \alpha x + \beta y</script><p>凸函数</p>
+<script type="math/tex; mode=display">
+f(\alpha x + \beta y) \le \alpha x + \beta y</script><p>线性规划：$f_0, f_1, … , f_m $ 均为线性函数；</p>
+<p>凸优化：$f_0, f_1, … , f_m $ 均为凸函数。</p>
+<h2 id="1-凸集"><a href="#1-凸集" class="headerlink" title="1. 凸集"></a>1. 凸集</h2>]]></content>
       <categories>
         <category>凸优化</category>
       </categories>
